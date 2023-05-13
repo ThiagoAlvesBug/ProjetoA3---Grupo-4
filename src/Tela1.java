@@ -32,7 +32,7 @@ public class Tela1 extends Tela2{
         label2.setBackground(new Color(250,250,250));
         label2.setHorizontalTextPosition(JLabel.CENTER);
         label2.setVerticalTextPosition(JLabel.BOTTOM);
-        label2.setText("Bem vindo!");
+        label2.setText("Bem-vindo!");
         label2.setForeground(new Color(250,250,250));
         label2.setFont(new Font("MV Boli", Font.BOLD, 20));
 
