@@ -18,7 +18,7 @@ public class Tela2 extends Fundo{
 
         JButton continuar = new JButton();
 
-        Tela2(){
+        Tela2(String userID){
 
                 /*_______________Buttons_______________*/
 

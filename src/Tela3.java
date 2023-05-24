@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,7 @@ public class Tela3 extends Fundo{
 
     /*_______________Criar_______________*/
 
-
+    DefaultTableModel model;
     JFrame tela3 = new JFrame();
     JTextField txtNome = new JTextField();
     JLabel labelNome = new JLabel();
@@ -21,14 +22,21 @@ public class Tela3 extends Fundo{
     JLabel labelNota = new JLabel();
     JLabel fundoT3 = new JLabel(fundo);
     JLabel label4 = new JLabel();
-    JButton botaoConfirmar = new JButton();
+    JButton botaoVerLista = new JButton();
     JButton botaoAdicionar = new JButton();
-    List<Filme> listaFilmes = new ArrayList<>();
 
 
-    Tela3() {
+
+   public Tela3(){
 
         /*_______________Sobre_O_Filme_______________*/
+
+
+        model = new DefaultTableModel();
+        model.addColumn("Nome");
+        model.addColumn("Ano");
+        model.addColumn("Gênero");
+        model.addColumn("Nota");
 
         labelNome.setVisible(true);
         labelNome.setText("Nome:");
@@ -78,13 +86,13 @@ public class Tela3 extends Fundo{
         /*_______________Botão_______________*/
 
 
-        botaoConfirmar.setVisible(true);
-        botaoConfirmar.setOpaque(false);
-        botaoConfirmar.setBackground(Color.black);
-        botaoConfirmar.setText("Confirmar");
-        botaoConfirmar.setForeground(Color.white);
-        botaoConfirmar.setFont(new Font("Consolas",Font.BOLD, 36));
-        botaoConfirmar.setBounds(520,575,250,50);
+        botaoVerLista.setVisible(true);
+        botaoVerLista.setOpaque(false);
+        botaoVerLista.setBackground(Color.black);
+        botaoVerLista.setText("Confirmar");
+        botaoVerLista.setForeground(Color.white);
+        botaoVerLista.setFont(new Font("Consolas",Font.BOLD, 36));
+        botaoVerLista.setBounds(520,575,250,50);
 
         botaoAdicionar.setVisible(true);
         botaoAdicionar.setOpaque(false);
@@ -97,36 +105,29 @@ public class Tela3 extends Fundo{
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Filme filme = new Filme();
-                    filme.ano = Integer.parseInt(txtAno.getText());
-                    filme.nome = txtNome.getText();
-                    filme.genero = txtGenero.getText();
-                    filme.nota = Integer.parseInt(txtNota.getText());
 
-                    txtNome.setText("");
-                    txtAno.setText("");
-                    txtGenero.setText("");
-                    txtNota.setText("");
+                String nome = txtNome.getText();
+                int ano = Integer.parseInt(txtAno.getText());
+                String genero = txtGenero.getText();
+                int nota = Integer.parseInt(txtNota.getText());
 
-                    listaFilmes.add(filme);
+                txtNome.setText("");
+                txtAno.setText("");
+                txtGenero.setText("");
+                txtNota.setText("");
 
-                    int quantidadeFilmes = listaFilmes.size();
-                    JOptionPane.showMessageDialog(null, filme.nome + " Adicionado. Você tem " + quantidadeFilmes + " iten(s) na lista.");
-                }
-                catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, "Os campos 'Ano' e 'Nota' só aceitam números.");
-
-                }
+                Tela4 tela4 = new Tela4(model);
+                tela4.adicionarNaTabela(nome,ano,genero,nota);
 
             }
         });
 
-        botaoConfirmar.addActionListener(new ActionListener() {
+        botaoVerLista.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                     tela3.dispose();
-                    new Tela4(listaFilmes);
+                    new Tela4(model);
+                    //tela4.adicionarNaTabela(nome,ano,genero,nota);
 
             }
         });
@@ -150,6 +151,7 @@ public class Tela3 extends Fundo{
         /*_______________Tela_______________*/
 
 
+        tela3.setTitle("MovieTime!");
         tela3.setVisible(true);
         tela3.setResizable(false);
         tela3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -162,7 +164,7 @@ public class Tela3 extends Fundo{
         tela3.add(labelAno);
         tela3.add(labelGenero);
         tela3.add(labelNota);
-        tela3.add(botaoConfirmar);
+        tela3.add(botaoVerLista);
         tela3.add(botaoAdicionar);
         tela3.add(label4);
         tela3.add(fundoT3);
