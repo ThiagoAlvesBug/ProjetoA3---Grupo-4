@@ -1,4 +1,4 @@
-
+/*
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+
 
 public class Tela1 extends Fundo{
 
@@ -44,7 +45,7 @@ public class Tela1 extends Fundo{
 
         /*_______________Labels_______________*/
 
-
+/*
         JLabel label1 = new JLabel();
 
         labelFundo.setLayout(new FlowLayout());
@@ -65,7 +66,7 @@ public class Tela1 extends Fundo{
 
         /*_______________TextFields_______________*/
 
-
+/*
         loginField.setVisible(true);
         loginField.setName("Usuário:");
         loginField.setBackground(Color.white);
@@ -91,7 +92,7 @@ public class Tela1 extends Fundo{
 
         /*_______________Buttons_______________*/
 
-
+/*
         resetButton.setPreferredSize(new Dimension(250,50));
         resetButton.setVisible(true);
         resetButton.setOpaque(false);
@@ -137,6 +138,8 @@ public class Tela1 extends Fundo{
 
         /*_______________TelaLogin_______________*/
 
+
+/*
         tela1.setVisible(true);
         tela1.setLocationRelativeTo(null);
         tela1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -151,3 +154,6 @@ public class Tela1 extends Fundo{
 
 
 }
+
+
+ */

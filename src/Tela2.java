@@ -28,7 +28,7 @@ public class Tela2 extends Fundo{
                 continuar.setBackground(Color.magenta);
                 continuar.setForeground(Color.white);
                 continuar.setFont(new Font("Colibri",Font.PLAIN, 30));
-                continuar.setBounds(520,420,250,70);
+                continuar.setBounds(510,420,250,70);
                 continuar.setHorizontalAlignment(JLabel.CENTER);
                 continuar.setVerticalAlignment(JLabel.BOTTOM);
 
@@ -53,7 +53,7 @@ public class Tela2 extends Fundo{
                 label2.setVisible(true);
 
                 label3.setVisible(true);
-                label3.setBounds(0,0,1280,720);
+                label3.setBounds(-5,0,1280,720);
                 label3.setText("Bem-Vindo!");
                 label3.setFont(new Font("Colibri",Font.BOLD, 70));
                 label3.setForeground(Color.white);

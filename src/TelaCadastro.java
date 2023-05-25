@@ -90,7 +90,7 @@ public class TelaCadastro extends Fundo {
         label5.setVisible(true);
         label5.setOpaque(false);
         label5.setFont(new Font("Colibri",Font.BOLD,36));
-        label5.setVerticalTextPosition(JLabel.TOP);
+        label5.setVerticalTextPosition(JLabel.BOTTOM);
         label5.setHorizontalTextPosition(JLabel.CENTER);
         label5.setVerticalAlignment(JLabel.CENTER);
         label5.setHorizontalAlignment(JLabel.CENTER);
@@ -130,6 +130,7 @@ public class TelaCadastro extends Fundo {
         telaCadastro.add(labelIdade2);
         telaCadastro.add(labelGenero2);
         telaCadastro.add(labelS);
+        telaCadastro.add(label5);
         telaCadastro.add(botaoConfirmar2);
         telaCadastro.add(fundoTC);
 
