@@ -36,6 +36,8 @@ public class Tela3 extends Fundo{
         model.addColumn("Gênero");
         model.addColumn("Nota");
 
+       /*_______________Nome_______________*/
+
         labelNome.setVisible(true);
         labelNome.setText("Nome:");
         labelNome.setForeground(Color.white);
@@ -46,6 +48,8 @@ public class Tela3 extends Fundo{
         txtNome.setVisible(true);
         txtNome.setName("Nome:");
         txtNome.setBounds(520,250,250,50);
+
+       /*_______________Ano_______________*/
 
         labelAno.setVisible(true);
         labelAno.setText(" Ano:");
@@ -58,6 +62,8 @@ public class Tela3 extends Fundo{
         txtAno.setName("Ano:");
         txtAno.setBounds(520,310,250,50);
 
+       /*_______________Gênero_______________*/
+
         labelGenero.setVisible(true);
         labelGenero.setText("Genero:");
         labelGenero.setForeground(Color.white);
@@ -68,6 +74,8 @@ public class Tela3 extends Fundo{
         txtGenero.setVisible(true);
         txtGenero.setName("Genero:");
         txtGenero.setBounds(520,370,250,50);
+
+       /*_______________Nota_______________*/
 
         labelNota.setVisible(true);
         labelNota.setText("Nota:");
@@ -81,7 +89,7 @@ public class Tela3 extends Fundo{
         txtNota.setBounds(520,430,250,50);
 
 
-        /*_______________Botão_______________*/
+        /*_______________Botões_______________*/
 
 
         botaoVerLista.setVisible(true);
@@ -166,11 +174,6 @@ public class Tela3 extends Fundo{
         tela3.add(botaoAdicionar);
         tela3.add(label4);
         tela3.add(fundoT3);
-
-
-
-
-
 
     }
 

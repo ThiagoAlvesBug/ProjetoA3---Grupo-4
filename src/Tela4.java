@@ -8,9 +8,12 @@ public class Tela4{
     DefaultTableModel model;
     JTable table;
 
+    /*_______________Tabela_______________*/
+
     public Tela4(DefaultTableModel model) {
         this.model = model;
 
+        /*_______________Tela_______________*/
 
         tela4.setVisible(true);
         tela4.setTitle("Minha Lista");
@@ -24,6 +27,8 @@ public class Tela4{
 
         tela4.add(scrollPane);
     }
+
+    /*_______________AdicionarNaTabela_______________*/
 
     public void adicionarNaTabela(String nome, int ano, String genero, int nota) {
         model.addRow(new Object[]{nome, ano, genero, nota});

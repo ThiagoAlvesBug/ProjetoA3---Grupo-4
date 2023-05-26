@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 public class Main extends Fundo{
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
+        /*_______________Criação_______________*/
 
         IDeSenha idandPasswords = new IDeSenha();
 
@@ -42,7 +42,7 @@ public class Main extends Fundo{
                 label1.setOpaque(false);
 
 
-                /*_______________Buttons_______________*/
+                /*_______________Botões_______________*/
 
             
                 botaoLogin.setBounds(385,300,500,100);
@@ -60,16 +60,6 @@ public class Main extends Fundo{
                 botaoCadastro.setForeground(Color.white);
                 botaoCadastro.setBackground(Color.darkGray);
 
-
-                tela1.setVisible(true);
-                tela1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                tela1.setResizable(false);
-                tela1.setSize(1280,720);
-                tela1.setTitle("MovieTime");
-                tela1.add(botaoCadastro);
-                tela1.add(botaoLogin);
-                tela1.add(label1);
-                tela1.add(labelFundo);
                 botaoCadastro.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -87,5 +77,16 @@ public class Main extends Fundo{
                     }
                 });
 
+                /*_______________Tela_______________*/
+
+                tela1.setVisible(true);
+                tela1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                tela1.setResizable(false);
+                tela1.setSize(1280,720);
+                tela1.setTitle("MovieTime");
+                tela1.add(botaoCadastro);
+                tela1.add(botaoLogin);
+                tela1.add(label1);
+                tela1.add(labelFundo);
     }
 }

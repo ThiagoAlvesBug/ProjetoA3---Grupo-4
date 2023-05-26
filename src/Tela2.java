@@ -20,7 +20,7 @@ public class Tela2 extends Fundo{
 
         Tela2(String userID){
 
-                /*_______________Buttons_______________*/
+                /*_______________Botão_______________*/
 
                 continuar.setVisible(true);
                 continuar.setText("Continuar");
@@ -46,7 +46,7 @@ public class Tela2 extends Fundo{
 
 
 
-                /*_______________Labels_______________*/
+                /*_______________Título_______________*/
 
                 label2.setSize(1280,720);
                 label2.setOpaque(true);
@@ -70,7 +70,7 @@ public class Tela2 extends Fundo{
 
 
 
-                /*_______________Frames_______________*/
+                /*_______________Tela_______________*/
 
                 tela2.setVisible(true);
                 tela2.setForeground(new Color(0x44014F));

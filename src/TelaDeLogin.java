@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class TelaDeLogin {
 
+    /*_______________Criação_______________*/
 
     JFrame telaDeLogin = new JFrame();
     JTextField txtLogin = new JTextField();
@@ -26,6 +27,8 @@ public class TelaDeLogin {
 
         loginInfo = loginInfoOriginal;
 
+        /*_______________Título_______________*/
+
         labelTitulo.setVisible(true);
         labelTitulo.setOpaque(false);
         labelTitulo.setFont(new Font("Colibri",Font.BOLD,36));
@@ -41,7 +44,7 @@ public class TelaDeLogin {
         messageLabel.setFont(new Font("MV Boli",Font.ITALIC,26));
 
 
-        /*_______________TextFields_______________*/
+        /*_______________Login_______________*/
 
 
         txtLogin.setVisible(true);
@@ -57,6 +60,8 @@ public class TelaDeLogin {
         labelLogin.setOpaque(false);
         labelLogin.setBounds(440,255,100,40);
 
+        /*_______________Senha_______________*/
+
         txtSenha.setVisible(true);
         txtSenha.setName("Senha:");
         txtSenha.setBackground(Color.white);
@@ -69,6 +74,8 @@ public class TelaDeLogin {
         labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
         labelSenha.setOpaque(false);
         labelSenha.setBounds(440,315,100,40);
+
+        /*_______________Botões_______________*/
 
         botaoLogin.setBounds(520,370,250,50);
         botaoLogin.setVisible(true);
@@ -105,10 +112,6 @@ public class TelaDeLogin {
 
             }//fim do action perform
         });
-
-
-
-        /*_______________Buttons_______________*/
 
 
         botaoReset.setBounds(520,430,250,50);
