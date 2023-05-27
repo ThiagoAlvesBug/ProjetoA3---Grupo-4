@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class FormLogin{
 
+    /*_______________Criação_______________*/
 
     JFrame frameLogin = new JFrame();
     JTextField txtLogin = new JTextField();
@@ -28,6 +29,8 @@ public class FormLogin{
 
         loginInfo = loginInfoOriginal;
 
+        /*_______________Título_______________*/
+
         labelTitulo.setVisible(true);
         labelTitulo.setOpaque(false);
         labelTitulo.setFont(new Font("Colibri",Font.BOLD,36));
@@ -43,7 +46,7 @@ public class FormLogin{
         messageLabel.setFont(new Font("MV Boli",Font.ITALIC,26));
 
 
-        /*_______________TextFields_______________*/
+        /*_______________Login_______________*/
 
 
         txtLogin.setVisible(true);
@@ -59,6 +62,8 @@ public class FormLogin{
         labelLogin.setOpaque(false);
         labelLogin.setBounds(520,140,100,40);
 
+        /*_______________Senha_______________*/
+
         txtSenha.setVisible(true);
         txtSenha.setName("Senha:");
         txtSenha.setBackground(Color.white);
@@ -71,6 +76,8 @@ public class FormLogin{
         labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
         labelSenha.setOpaque(false);
         labelSenha.setBounds(520,260,100,40);
+
+        /*_______________Botões_______________*/
 
         botaoLogin.setBounds(520,370,250,50);
         botaoLogin.setVisible(true);
@@ -103,7 +110,6 @@ public class FormLogin{
 
             }
         });//fim do action perform
-
 
 
         /*_______________Buttons_______________*/

@@ -37,6 +37,8 @@ public class FormCadastroFilme extends Fundo{
         model.addColumn("Gênero");
         model.addColumn("Nota");
 
+       /*_______________Nome_______________*/
+
         labelNome.setVisible(true);
         labelNome.setText("Nome:");
         labelNome.setForeground(Color.white);
@@ -47,6 +49,8 @@ public class FormCadastroFilme extends Fundo{
         txtNome.setVisible(true);
         txtNome.setName("Nome:");
         txtNome.setBounds(520,250,250,50);
+
+       /*_______________Ano_______________*/
 
         labelAno.setVisible(true);
         labelAno.setText(" Ano:");
@@ -59,6 +63,8 @@ public class FormCadastroFilme extends Fundo{
         txtAno.setName("Ano:");
         txtAno.setBounds(520,310,250,50);
 
+       /*_______________Gênero_______________*/
+
         labelGenero.setVisible(true);
         labelGenero.setText("Genero:");
         labelGenero.setForeground(Color.white);
@@ -69,6 +75,8 @@ public class FormCadastroFilme extends Fundo{
         txtGenero.setVisible(true);
         txtGenero.setName("Genero:");
         txtGenero.setBounds(520,370,250,50);
+
+       /*_______________Nota_______________*/
 
         labelNota.setVisible(true);
         labelNota.setText("Nota:");
@@ -82,7 +90,7 @@ public class FormCadastroFilme extends Fundo{
         txtNota.setBounds(520,430,250,50);
 
 
-        /*_______________Botão_______________*/
+        /*_______________Botões_______________*/
 
 
         botaoVerLista.setVisible(true);
@@ -198,11 +206,6 @@ public class FormCadastroFilme extends Fundo{
         frameCadastroFilme.add(botaoSair);
         frameCadastroFilme.add(label4);
         frameCadastroFilme.add(fundoT3);
-
-
-
-
-
 
     }
 

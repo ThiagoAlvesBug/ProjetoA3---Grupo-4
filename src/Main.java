@@ -6,8 +6,9 @@ import java.awt.event.ActionListener;
 public class Main extends Fundo {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
+        /*_______________Criação_______________*/
 
         User.addUser("1","1");
         User.addUser("Thiago","thiago123");
@@ -24,7 +25,6 @@ public class Main extends Fundo {
         JButton botaoCadastro = new JButton();
 
         JLabel label1 = new JLabel();
-
 
         /*_______________Labels_______________*/
 

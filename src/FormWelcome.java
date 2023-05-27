@@ -19,7 +19,7 @@ public class FormWelcome extends Fundo{
 
         FormWelcome(String userID){
 
-                /*_______________Buttons_______________*/
+                /*_______________Botão_______________*/
 
                 continuar.setVisible(true);
                 continuar.setText("Continuar");
@@ -45,7 +45,7 @@ public class FormWelcome extends Fundo{
 
 
 
-                /*_______________Labels_______________*/
+                /*_______________Título_______________*/
 
                 label2.setSize(1280,720);
                 label2.setOpaque(true);
