@@ -1,15 +1,14 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Tela2 extends Fundo{
+public class FormWelcome extends Fundo{
 
 
         //tela2 = tela de boas vindas
-        JFrame tela2 = new JFrame();
+        JFrame frameWelcome = new JFrame();
 
         //ImageIcon fundo = new ImageIcon(getClass().getResource("BlackPurple.jpg"));
 
@@ -18,7 +17,7 @@ public class Tela2 extends Fundo{
 
         JButton continuar = new JButton();
 
-        Tela2(String userID){
+        FormWelcome(String userID){
 
                 /*_______________Buttons_______________*/
 
@@ -36,8 +35,8 @@ public class Tela2 extends Fundo{
                         @Override
                         public void actionPerformed(ActionEvent e) {
                                if (e.getSource()==continuar){
-                                       tela2.dispose();
-                                       new Tela3();
+                                       frameWelcome.dispose();
+                                       new FormCadastroFilme();
 
                                 }
                         }
@@ -69,17 +68,30 @@ public class Tela2 extends Fundo{
                 label2.add(continuar);
 
 
-
                 /*_______________Frames_______________*/
 
-                tela2.setVisible(true);
-                tela2.setForeground(new Color(0x44014F));
-                tela2.setBackground(new Color(0x44014F));
-                tela2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                tela2.setResizable(false);
-                tela2.setSize(1280,720);
-                tela2.setTitle("MovieTime");
-                tela2.add(label2);
+                Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+                Dimension screenSize = toolkit.getScreenSize();
+
+                int largura = screenSize.width;
+                int altura = screenSize.height;
+
+                int formWidth = 1280;
+                int formHeight = 720;
+
+                int formX  = (largura - formWidth) / 2;
+                int formY = (altura - formHeight) / 2;
+
+                frameWelcome.setVisible(true);
+                frameWelcome.setLocation(formX,formY);
+                frameWelcome.setForeground(new Color(0x44014F));
+                frameWelcome.setBackground(new Color(0x44014F));
+                frameWelcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frameWelcome.setResizable(false);
+                frameWelcome.setSize(formWidth,formHeight);
+                frameWelcome.setTitle("MovieTime");
+                frameWelcome.add(label2);
 
 
 

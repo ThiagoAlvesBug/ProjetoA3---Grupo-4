@@ -4,12 +4,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Tela3 extends Fundo{
+public class FormCadastroFilme extends Fundo{
 
     /*_______________Criar_______________*/
 
     DefaultTableModel model;
-    JFrame tela3 = new JFrame();
+    JFrame frameCadastroFilme = new JFrame();
     JTextField txtNome = new JTextField();
     JLabel labelNome = new JLabel();
     JTextField txtAno = new JTextField();
@@ -22,10 +22,11 @@ public class Tela3 extends Fundo{
     JLabel label4 = new JLabel();
     JButton botaoVerLista = new JButton();
     JButton botaoAdicionar = new JButton();
+    JButton botaoSair = new JButton();
 
 
 
-   public Tela3(){
+   public FormCadastroFilme(){
 
         /*_______________Sobre_O_Filme_______________*/
 
@@ -87,7 +88,7 @@ public class Tela3 extends Fundo{
         botaoVerLista.setVisible(true);
         botaoVerLista.setOpaque(false);
         botaoVerLista.setBackground(Color.black);
-        botaoVerLista.setText("Confirmar");
+        botaoVerLista.setText("Ver Lista");
         botaoVerLista.setForeground(Color.white);
         botaoVerLista.setFont(new Font("Consolas",Font.BOLD, 36));
         botaoVerLista.setBounds(520,575,250,50);
@@ -99,6 +100,14 @@ public class Tela3 extends Fundo{
         botaoAdicionar.setForeground(Color.white);
         botaoAdicionar.setFont(new Font("Consolas",Font.BOLD, 36));
         botaoAdicionar.setBounds(520,500,250,50);
+
+        botaoSair.setVisible(true);
+        botaoSair.setOpaque(false);
+        botaoSair.setBackground(Color.black);
+        botaoSair.setText("Sair");
+        botaoSair.setForeground(Color.white);
+        botaoSair.setFont(new Font("Consolas",Font.BOLD, 36));
+        botaoSair.setBounds(950,575,150,50);
 
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
@@ -114,7 +123,7 @@ public class Tela3 extends Fundo{
                 txtGenero.setText("");
                 txtNota.setText("");
 
-                Tela4 tela4 = new Tela4(model);
+                FormListaFilme tela4 = new FormListaFilme(model);
                 tela4.adicionarNaTabela(nome,ano,genero,nota);
 
             }
@@ -123,10 +132,18 @@ public class Tela3 extends Fundo{
         botaoVerLista.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    tela3.dispose();
-                    new Tela4(model);
+                    frameCadastroFilme.dispose();
+                    new FormListaFilme(model);
                     //tela4.adicionarNaTabela(nome,ano,genero,nota);
 
+            }
+        });
+
+        botaoSair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FormLogin();
+                frameCadastroFilme.hide();
             }
         });
 
@@ -149,23 +166,38 @@ public class Tela3 extends Fundo{
         /*_______________Tela_______________*/
 
 
-        tela3.setTitle("MovieTime!");
-        tela3.setVisible(true);
-        tela3.setResizable(false);
-        tela3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        tela3.setSize(1280, 720);
-        tela3.add(txtNome);
-        tela3.add(txtAno);
-        tela3.add(txtGenero);
-        tela3.add(txtNota);
-        tela3.add(labelNome);
-        tela3.add(labelAno);
-        tela3.add(labelGenero);
-        tela3.add(labelNota);
-        tela3.add(botaoVerLista);
-        tela3.add(botaoAdicionar);
-        tela3.add(label4);
-        tela3.add(fundoT3);
+       Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+       Dimension screenSize = toolkit.getScreenSize();
+
+       int largura = screenSize.width;
+       int altura = screenSize.height;
+
+       int formWidth = 1280;
+       int formHeight = 720;
+
+       int formX  = (largura - formWidth) / 2;
+       int formY = (altura - formHeight) / 2;
+
+        frameCadastroFilme.setTitle("MovieTime!");
+        frameCadastroFilme.setVisible(true);
+        frameCadastroFilme.setResizable(false);
+        frameCadastroFilme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameCadastroFilme.setSize(formWidth, formHeight);
+        frameCadastroFilme.setLocation(formX,formY);
+        frameCadastroFilme.add(txtNome);
+        frameCadastroFilme.add(txtAno);
+        frameCadastroFilme.add(txtGenero);
+        frameCadastroFilme.add(txtNota);
+        frameCadastroFilme.add(labelNome);
+        frameCadastroFilme.add(labelAno);
+        frameCadastroFilme.add(labelGenero);
+        frameCadastroFilme.add(labelNota);
+        frameCadastroFilme.add(botaoVerLista);
+        frameCadastroFilme.add(botaoAdicionar);
+        frameCadastroFilme.add(botaoSair);
+        frameCadastroFilme.add(label4);
+        frameCadastroFilme.add(fundoT3);
 
 
 

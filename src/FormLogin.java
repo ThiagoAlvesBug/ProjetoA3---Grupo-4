@@ -4,25 +4,27 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.*;
 
-public class TelaDeLogin {
+public class FormLogin{
 
 
-    JFrame telaDeLogin = new JFrame();
+    JFrame frameLogin = new JFrame();
     JTextField txtLogin = new JTextField();
     JPasswordField txtSenha = new JPasswordField();
     JButton botaoLogin = new JButton();
     JLabel labelFundo = new JLabel(Fundo.fundo);
     JButton botaoReset = new JButton();
+    JButton botaoVoltar = new JButton();
     JLabel messageLabel = new JLabel();
     JLabel labelTitulo = new JLabel();
     JLabel labelLogin = new JLabel();
     JLabel labelSenha = new JLabel();
     HashMap<String,String> loginInfo = new HashMap<String,String>();
 
-        TelaDeLogin(){}
+        FormLogin(){}
 
 
-    public TelaDeLogin(HashMap<String,String> loginInfoOriginal) {
+    public FormLogin(JFrame frameVoltar, HashMap<String,String> loginInfoOriginal) {
+
 
         loginInfo = loginInfoOriginal;
 
@@ -37,7 +39,7 @@ public class TelaDeLogin {
         labelTitulo.setSize(1280,100);
         labelTitulo.setForeground(Color.white);
 
-        messageLabel.setBounds(500,500,300,40);
+        messageLabel.setLocation(500,500);
         messageLabel.setFont(new Font("MV Boli",Font.ITALIC,26));
 
 
@@ -47,32 +49,33 @@ public class TelaDeLogin {
         txtLogin.setVisible(true);
         txtLogin.setName("Usuário:");
         txtLogin.setBackground(Color.white);
-        txtLogin.setBounds(520,250,250,50);
+        txtLogin.setBounds(520,170,250,50);
         txtLogin.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
 
         labelLogin.setVisible(true);
-        labelLogin.setText("Login:");
+        labelLogin.setText("Login");
         labelLogin.setForeground(Color.white);
         labelLogin.setFont(new Font("Consolas", Font.BOLD,20));
         labelLogin.setOpaque(false);
-        labelLogin.setBounds(440,255,100,40);
+        labelLogin.setBounds(520,140,100,40);
 
         txtSenha.setVisible(true);
         txtSenha.setName("Senha:");
         txtSenha.setBackground(Color.white);
-        txtSenha.setBounds(520,310,250,50);
+        txtSenha.setBounds(520,290,250,50);
         txtSenha.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
 
         labelSenha.setVisible(true);
-        labelSenha.setText("Senha:");
+        labelSenha.setText("Senha");
         labelSenha.setForeground(Color.white);
         labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
         labelSenha.setOpaque(false);
-        labelSenha.setBounds(440,315,100,40);
+        labelSenha.setBounds(520,260,100,40);
 
         botaoLogin.setBounds(520,370,250,50);
         botaoLogin.setVisible(true);
         botaoLogin.setOpaque(false);
+        botaoLogin.setFont(new Font("Consolas", Font.BOLD,20));
         botaoLogin.setText("Login");
         botaoLogin.setForeground(Color.white);
         botaoLogin.setBackground(Color.darkGray);
@@ -87,34 +90,30 @@ public class TelaDeLogin {
                     if(loginInfo.containsKey(userID)) {
                         if(loginInfo.get(userID).equals(password)) {
                             messageLabel.setForeground(Color.green);
-                            messageLabel.setText("Login Confirmado!");
-                            telaDeLogin.dispose();
-                            new Tela2(userID);
+                            frameLogin.dispose();
+                            new FormWelcome(userID);
+                            return;
                         }
-                        else {
-                            messageLabel.setForeground(Color.white);
-                            messageLabel.setText("   Senha Incorreta!");
-                        }
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!");
+                    txtLogin.setText("");
+                    txtSenha.setText("");
 
-                    }
-                    else {
-                        messageLabel.setForeground(Color.white);
-                        messageLabel.setText("Usuário não encontrado");
-                    }
                 }
 
-            }//fim do action perform
-        });
+            }
+        });//fim do action perform
 
 
 
         /*_______________Buttons_______________*/
 
 
-        botaoReset.setBounds(520,430,250,50);
+        botaoReset.setBounds(520,440,250,50);
         botaoReset.setVisible(true);
         botaoReset.setOpaque(false);
         botaoReset.setText("Reset");
+        botaoReset.setFont(new Font("Consolas", Font.BOLD,20));
         botaoReset.setForeground(Color.white);
         botaoReset.setBackground(Color.darkGray);
         botaoReset.addActionListener(new ActionListener() {
@@ -127,23 +126,55 @@ public class TelaDeLogin {
             }
         });
 
+        botaoVoltar.setBounds(10,10,50,50);
+        botaoVoltar.setVisible(true);
+        botaoVoltar.setOpaque(true);
+        botaoVoltar.setFont(new Font("Consolas", Font.BOLD,20));
+        botaoVoltar.setText("<");
+        botaoVoltar.setForeground(Color.white);
+        botaoVoltar.setBackground(Color.DARK_GRAY);
+
+        botaoVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameVoltar.setVisible(true);
+                frameLogin.dispose();
+            }
+        });
+
 
         /*_______________TelaLogin_______________*/
 
-        telaDeLogin.setVisible(true);
-        telaDeLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        telaDeLogin.setResizable(false);
-        telaDeLogin.setSize(1280,720);
-        telaDeLogin.setTitle("MovieTime");
-        telaDeLogin.add(txtLogin);
-        telaDeLogin.add(txtSenha);
-        telaDeLogin.add(labelLogin);
-        telaDeLogin.add(labelSenha);
-        telaDeLogin.add(messageLabel);
-        telaDeLogin.add(botaoLogin);
-        telaDeLogin.add(botaoReset);
-        telaDeLogin.add(labelTitulo);
-        telaDeLogin.add(labelFundo);
+
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+        Dimension screenSize = toolkit.getScreenSize();
+
+        int largura = screenSize.width;
+        int altura = screenSize.height;
+
+        int formWidth = 1280;
+        int formHeight = 720;
+
+        int formX  = (largura - formWidth) / 2;
+        int formY = (altura - formHeight) / 2;
+
+        frameLogin.setVisible(true);
+        frameLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameLogin.setResizable(false);
+        frameLogin.setSize(formWidth,formHeight);
+        frameLogin.setLocation(formX,formY);
+        frameLogin.setTitle("MovieTime");
+        frameLogin.add(txtLogin);
+        frameLogin.add(txtSenha);
+        frameLogin.add(labelLogin);
+        frameLogin.add(labelSenha);
+        frameLogin.add(messageLabel);
+        frameLogin.add(botaoLogin);
+        frameLogin.add(botaoReset);
+        frameLogin.add(botaoVoltar);
+        frameLogin.add(labelTitulo);
+        frameLogin.add(labelFundo);
 
 
 
