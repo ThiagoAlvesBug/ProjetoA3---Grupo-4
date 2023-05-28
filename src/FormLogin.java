@@ -1,7 +1,13 @@
-import java.awt.*;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.*;
 
 public class FormLogin{
@@ -94,17 +100,30 @@ public class FormLogin{
                     String userID = txtLogin.getText();
                     String password = String.valueOf(txtSenha.getPassword());
 
-                    if(loginInfo.containsKey(userID)) {
-                        if(loginInfo.get(userID).equals(password)) {
-                            messageLabel.setForeground(Color.green);
-                            frameLogin.dispose();
-                            new FormWelcome(userID);
-                            return;
-                        }
+                    ConexaoBD conexaoBD = null;
+                    try {
+                        conexaoBD = new ConexaoBD();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
                     }
-                    JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!");
-                    txtLogin.setText("");
-                    txtSenha.setText("");
+
+                    List<User> listaUsuario = conexaoBD.listarUsuarios();
+
+                    List<User> listaUsuariosEncontrados = listaUsuario.stream()
+                            .filter(usuario ->
+                                    usuario.getNome().equals(userID)
+                                    && usuario.getSenha().equals(password))
+                            .collect(Collectors.toList());
+
+                    if(listaUsuariosEncontrados.size() == 0){
+                        JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!");
+                        txtLogin.setText("");
+                        txtSenha.setText("");
+                        return;
+                    }
+
+                    frameLogin.dispose();
+                    new FormWelcome(userID);
 
                 }
 

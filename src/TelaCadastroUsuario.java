@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class TelaCadastroUsuario extends Fundo {
 
@@ -25,7 +26,8 @@ public class TelaCadastroUsuario extends Fundo {
     JLabel label5 = new JLabel();
     JButton botaoConfirmar2 = new JButton();
     JButton botaoVoltar = new JButton();
-
+    JComboBox<String> sexoBox = new JComboBox<String>();
+    JComboBox<Integer> idadeBox = new JComboBox<Integer>();
 
     TelaCadastroUsuario(JFrame frameVoltar){
 
@@ -45,18 +47,22 @@ public class TelaCadastroUsuario extends Fundo {
 
         /*_______________Idade_______________*/
 
-        labelIdade2.setVisible(true);
-        labelIdade2.setText("Idade:");
-        labelIdade2.setForeground(Color.white);
-        labelIdade2.setFont(new Font("Consolas", Font.BOLD,20));
-        labelIdade2.setOpaque(false);
-        labelIdade2.setBounds(715,100,100,40);
+        labelSenha.setVisible(true);
+        labelSenha.setText("Senha");
+        labelSenha.setForeground(Color.white);
+        labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
+        labelSenha.setOpaque(false);
+        labelSenha.setBounds(715,100,100,40);
 
-        idade2.setVisible(true);
-        idade2.setName("Idade");
-        idade2.setFont(new Font("Consolas", Font.BOLD, 16));
-        idade2.setBounds(715,130,250,50);
+        idadeBox.setVisible(true);
+        idadeBox.setName("Idade");
+        idadeBox.setBounds(715,370,250,50);
 
+        int idade;
+
+        for (idade = 1; idade<=100; idade++){
+            idadeBox.addItem(idade);
+        }
         /*_______________Sexo_______________*/
 
         labelSexo.setVisible(true);
@@ -66,10 +72,12 @@ public class TelaCadastroUsuario extends Fundo {
         labelSexo.setOpaque(false);
         labelSexo.setBounds(300,340,220,40);
 
-        sexoTxt.setVisible(true);
-        sexoTxt.setName("Sexo");
-        sexoTxt.setFont(new Font("Consolas", Font.BOLD, 16));
-        sexoTxt.setBounds(300,370,250,50);
+        sexoBox.setVisible(true);
+        sexoBox.addItem("Masculino");
+        sexoBox.addItem("Feminino");
+        sexoBox.addItem("Outro");
+        sexoBox.setBounds(300,370,250,50);
+
 
         /*_______________Gênero1_______________*/
 
@@ -101,17 +109,17 @@ public class TelaCadastroUsuario extends Fundo {
 
         /*_______________Senha_______________*/
 
-        labelSenha.setVisible(true);
-        labelSenha.setText("Senha");
-        labelSenha.setForeground(Color.white);
-        labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
-        labelSenha.setOpaque(false);
-        labelSenha.setBounds(715,340,220,40);
+        labelIdade2.setVisible(true);
+        labelIdade2.setText("Idade");
+        labelIdade2.setForeground(Color.white);
+        labelIdade2.setFont(new Font("Consolas", Font.BOLD,20));
+        labelIdade2.setOpaque(false);
+        labelIdade2.setBounds(715,340,220,40);
 
         txtSenha.setVisible(true);
         txtSenha.setName("Senha");
         txtSenha.setFont(new Font("Consolas", Font.BOLD, 16));
-        txtSenha.setBounds(715,370,250,50);
+        txtSenha.setBounds(715,130,250,50);
 
         /*_______________Título_______________*/
 
@@ -122,7 +130,7 @@ public class TelaCadastroUsuario extends Fundo {
         label5.setHorizontalTextPosition(JLabel.CENTER);
         label5.setVerticalAlignment(JLabel.CENTER);
         label5.setHorizontalAlignment(JLabel.CENTER);
-        label5.setText("Cadastro:");
+        label5.setText("Nova conta");
         label5.setSize(1280,100);
         label5.setForeground(Color.white);
 
@@ -147,7 +155,7 @@ public class TelaCadastroUsuario extends Fundo {
         botaoConfirmar2.setVisible(true);
         botaoConfirmar2.setOpaque(false);
         botaoConfirmar2.setBackground(Color.black);
-        botaoConfirmar2.setText("Confirmar");
+        botaoConfirmar2.setText("Criar conta");
         botaoConfirmar2.setForeground(Color.white);
         botaoConfirmar2.setFont(new Font("Consolas", Font.BOLD,20));
         botaoConfirmar2.setBounds(505,470,250,50);
@@ -156,14 +164,37 @@ public class TelaCadastroUsuario extends Fundo {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nomeCadastro = nome2.getText();
-                int idadeCadastro  = Integer.parseInt(idade2.getText());
-                String sexo = sexoTxt.getText();
+                int idade  = (int) idadeBox.getSelectedItem();
                 String generoFavorito1 = genero1.getText();
                 String generoFavorito2 = genero2.getText();
+                String senha = txtSenha.getText();
+                String sexo = (String) sexoBox.getSelectedItem();
 
-                JOptionPane.showMessageDialog(null,"Cadastro ralizado com sucesso!");
+                User usuario = new User();
+                usuario.setNome(nomeCadastro);
+                usuario.setIdade(idade);
+                usuario.setGenero1(generoFavorito1);
+                usuario.setGenero2(generoFavorito2);
+                usuario.setSexo(sexo);
+                usuario.setSenha(senha);
 
-                telaCadastroUsuario.dispose();
+                try {
+                    ConexaoBD conexaoBD = new ConexaoBD();
+
+                  boolean cadastrou = conexaoBD.cadastrarUsuario(usuario);
+
+                  if(cadastrou){
+                      JOptionPane.showMessageDialog(null,"Cadastro ralizado com sucesso!");
+                  }
+                  else {
+                      JOptionPane.showMessageDialog(null, "Ocorreu um erro ao realizar o cadastro.");
+                  }
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                //telaCadastroUsuario.dispose();
 
             }
         });
@@ -189,10 +220,10 @@ public class TelaCadastroUsuario extends Fundo {
         telaCadastroUsuario.setSize(formWidth, formHeight);
         telaCadastroUsuario.setLocation(formX,formY);
         telaCadastroUsuario.add(nome2);
-        telaCadastroUsuario.add(idade2);
+        telaCadastroUsuario.add(idadeBox);
         telaCadastroUsuario.add(genero1);
         telaCadastroUsuario.add(genero2);
-        telaCadastroUsuario.add(sexoTxt);
+        telaCadastroUsuario.add(sexoBox);
         telaCadastroUsuario.add(txtSenha);
         telaCadastroUsuario.add(labelNome2);
         telaCadastroUsuario.add(labelIdade2);
