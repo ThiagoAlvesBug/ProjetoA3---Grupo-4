@@ -8,52 +8,6 @@ public class ConexaoBD {
     String username = "root";
     String password = "52576";
 
-    public ConexaoBD() throws SQLException {
-        // Estabelecer a conexão com o banco de dados
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Conexão estabelecida com sucesso!");
-
-            // Executar uma consulta SQL
-            String sql = "SELECT * FROM Usuario";
-            try (Statement statement = connection.createStatement();
-                 ResultSet resultSet = statement.executeQuery(sql)) {
-                // Processar os resultados da consulta
-                while (resultSet.next()) {
-                    int id = resultSet.getInt("ID");
-                    String nome = resultSet.getString("Nome");
-                    int idade = resultSet.getInt("Idade");
-                    String genero1 = resultSet.getString("Genero1");
-                    String genero2 = resultSet.getString("Genero2");
-                    String senha = resultSet.getString("Senha");
-                    String sexoChar = resultSet.getString("Sexo");
-
-                    String sexo;
-
-                    switch (sexoChar){
-                        case "M":
-                            sexo = "Masculino";
-                            break;
-
-                        case "F":
-                            sexo = "Feminino";
-                            break;
-
-                        case "O":
-                        default:
-                            sexo = "Outro";
-                            break;
-
-                    }
-
-                        //User user = new User(nome, idade, genero1, genero2, sexo, senha);
-
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-        }
-    }
-
     public boolean cadastrarUsuario(User usuario) {
 
         //root@127.0.0.1:3306

@@ -25,15 +25,11 @@ public class FormLogin{
     JLabel labelTitulo = new JLabel();
     JLabel labelLogin = new JLabel();
     JLabel labelSenha = new JLabel();
-    HashMap<String,String> loginInfo = new HashMap<String,String>();
 
         FormLogin(){}
 
 
-    public FormLogin(JFrame frameVoltar, HashMap<String,String> loginInfoOriginal) {
-
-
-        loginInfo = loginInfoOriginal;
+    public FormLogin(JFrame frameVoltar) {
 
         /*_______________Título_______________*/
 

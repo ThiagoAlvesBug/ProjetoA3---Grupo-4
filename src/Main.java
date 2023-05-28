@@ -8,11 +8,6 @@ public class Main extends Fundo {
 
     public static void main(String[] args){
 
-        /*_______________Criação_______________*/
-
-        User.addUser("1","1");
-        User.addUser("Thiago","thiago123");
-        User.addUser("Professor","professor123");
 
         //TelaDeLogin loginPage = new TelaDeLogin(User.getLoginInfo());
 
@@ -96,7 +91,7 @@ public class Main extends Fundo {
         botaoLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new FormLogin(frameMain, User.getLoginInfo());
+                new FormLogin(frameMain);
                 frameMain.setVisible(false);
             }
         });
