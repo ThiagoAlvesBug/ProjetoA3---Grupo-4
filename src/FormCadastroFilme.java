@@ -145,7 +145,7 @@ public class FormCadastroFilme extends Fundo{
 
                 String nome = txtNome.getText();
                 int ano = Integer.parseInt(txtAno.getText());
-                String genero = txtGenero.getText();
+                String genero = generoBox.getSelectedItem().toString();
                 int nota = (int) notaBox.getSelectedItem();
 
                 txtNome.setText("");
@@ -155,6 +155,12 @@ public class FormCadastroFilme extends Fundo{
 
                 FormListaFilme tela4 = new FormListaFilme(model);
                 tela4.adicionarNaTabela(nome,ano,genero,nota);
+
+                Filme filme = new Filme();
+                filme.setNome(nome);
+                filme.setAno(ano);
+                filme.setGenero(genero);
+                filme.setNota(nota);
 
             }
         });

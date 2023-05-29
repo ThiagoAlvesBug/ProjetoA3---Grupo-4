@@ -60,6 +60,9 @@ public class ConexaoBD {
                     }
                     return sucesso;
             }
+
+
+
         } catch (SQLException e) {
             System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
@@ -119,6 +122,8 @@ public class ConexaoBD {
                     listaUsuarios.add(user);
                 }
             }
+
+
         } catch (SQLException e) {
             System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
@@ -126,4 +131,64 @@ public class ConexaoBD {
         return listaUsuarios;
     }
 
+    String sqlFilme =   """
+                        INSERT INTO Filme
+                            (id_usuario,
+                            titulo,
+                            genero,
+                            ano,
+                            nota)
+                       VALUES
+                            (?,
+                            ?,
+                            ?,
+                            ?,
+                            ?);
+                        """;
+
+    public void adicionarFilme(Filme filme) {
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement statement = connection.prepareStatement(sqlFilme);
+            statement.setInt(1, filme.getIdUsuario());
+            statement.setString(2, filme.getNome());
+            statement.setString(3, filme.getGenero());
+            statement.setInt(4, filme.getAno());
+            statement.executeUpdate();
+
+
+            int idUsuario = 0;{
+                List<Filme> filmes = new ArrayList<>();
+                try (Connection connection1 = DriverManager.getConnection(url, username, password)) {
+                    {
+                        statement.setInt(1, idUsuario);
+                        try (ResultSet resultSet = statement.executeQuery()) {
+                            while (resultSet.next()) {
+                                int idFilme = resultSet.getInt("id_filme");
+                                String nome = resultSet.getString("titulo");
+                                String genero = resultSet.getString("genero");
+                                int ano = resultSet.getInt("ano");
+                                int nota = resultSet.getInt("nota");
+
+                                filme = new Filme();
+                                filme.setIdUsuario(idFilme);
+                                filme.setNome(filme.getNome());
+                                filme.setAno(filme.getAno());
+                                filme.setGenero(filme.getGenero());
+                                filme.setNota(filme.getNota());
+
+                                filmes.add(filme);
+                            }
+                        }
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
+
