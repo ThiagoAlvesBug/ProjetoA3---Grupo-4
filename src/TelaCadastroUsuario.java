@@ -27,6 +27,8 @@ public class TelaCadastroUsuario extends Fundo {
     JButton botaoConfirmar2 = new JButton();
     JButton botaoVoltar = new JButton();
     JComboBox<String> sexoBox = new JComboBox<String>();
+    JComboBox generoFav1 = new JComboBox();
+    JComboBox generoFav2 = new JComboBox();
     JComboBox<Integer> idadeBox = new JComboBox<Integer>();
 
     TelaCadastroUsuario(JFrame frameVoltar){
@@ -88,10 +90,23 @@ public class TelaCadastroUsuario extends Fundo {
         labelGenero1.setOpaque(false);
         labelGenero1.setBounds(300,220,220,40);
 
-        genero1.setVisible(true);
-        genero1.setName("Gênero1");
-        genero1.setFont(new Font("Consolas", Font.BOLD, 16));
-        genero1.setBounds(300,250,250,50);
+        generoFav1.setVisible(true);
+        generoFav1.setName("Genero");
+        generoFav1.addItem("Selecione...");
+        generoFav1.addItem("Ação");
+        generoFav1.addItem("Aventura");
+        generoFav1.addItem("Biográfico");
+        generoFav1.addItem("Comédia");
+        generoFav1.addItem("Comédia Romântica");
+        generoFav1.addItem("Histórico");
+        generoFav1.addItem("Drama");
+        generoFav1.addItem("Fantasia");
+        generoFav1.addItem("Ficção-Científica");
+        generoFav1.addItem("Musical");
+        generoFav1.addItem("Romance");
+        generoFav1.addItem("Terror");
+        generoFav1.addItem("Suspense");
+        generoFav1.setBounds(300,250,250,50);
 
         /*_______________Gênero2_______________*/
 
@@ -102,10 +117,24 @@ public class TelaCadastroUsuario extends Fundo {
         labelGenero2.setOpaque(false);
         labelGenero2.setBounds(715,220,220,40);
 
-        genero2.setVisible(true);
-        genero2.setName("Gênero2");
-        genero2.setFont(new Font("Consolas", Font.BOLD, 16));
-        genero2.setBounds(715,250,250,50);
+        generoFav2.setVisible(true);
+        generoFav2.setName("Genero");
+        generoFav2.addItem("Selecione...");
+        generoFav2.addItem("");
+        generoFav2.addItem("Ação");
+        generoFav2.addItem("Aventura");
+        generoFav2.addItem("Biográfico");
+        generoFav2.addItem("Comédia");
+        generoFav2.addItem("Comédia Romântica");
+        generoFav2.addItem("Histórico");
+        generoFav2.addItem("Drama");
+        generoFav2.addItem("Fantasia");
+        generoFav2.addItem("Ficção-Científica");
+        generoFav2.addItem("Musical");
+        generoFav2.addItem("Romance");
+        generoFav2.addItem("Terror");
+        generoFav2.addItem("Suspense");
+        generoFav2.setBounds(715,250,250,50);
 
         /*_______________Senha_______________*/
 
@@ -165,10 +194,24 @@ public class TelaCadastroUsuario extends Fundo {
             public void actionPerformed(ActionEvent e) {
                 String nomeCadastro = nome2.getText();
                 int idade  = (int) idadeBox.getSelectedItem();
-                String generoFavorito1 = genero1.getText();
-                String generoFavorito2 = genero2.getText();
+                String generoFavorito1 = (String) generoFav1.getSelectedItem();
+                String generoFavorito2 = (String) generoFav2.getSelectedItem();
                 String senha = txtSenha.getText();
                 String sexo = (String) sexoBox.getSelectedItem();
+
+                boolean generoEhValido = generoFavorito1.equals("Selecione...") == false;
+
+                if(generoEhValido == false){
+                    JOptionPane.showMessageDialog(null, "Esse não é um Gênero válido");
+                    return;
+                }
+
+                boolean generoEhValido2 = generoFavorito2.equals("Selecione...") == false;
+
+                if(generoEhValido == false){
+                    JOptionPane.showMessageDialog(null, "Esse não é um Gênero válido");
+                    return;
+                }
 
                 User usuario = new User();
                 usuario.setNome(nomeCadastro);
@@ -178,20 +221,15 @@ public class TelaCadastroUsuario extends Fundo {
                 usuario.setSexo(sexo);
                 usuario.setSenha(senha);
 
-                try {
-                    ConexaoBD conexaoBD = new ConexaoBD();
+                ConexaoBD conexaoBD = new ConexaoBD();
 
-                  boolean cadastrou = conexaoBD.cadastrarUsuario(usuario);
+                boolean cadastrou = conexaoBD.cadastrarUsuario(usuario);
 
-                  if(cadastrou){
-                      JOptionPane.showMessageDialog(null,"Cadastro ralizado com sucesso!");
-                  }
-                  else {
-                      JOptionPane.showMessageDialog(null, "Ocorreu um erro ao realizar o cadastro.");
-                  }
-
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                if(cadastrou){
+                    JOptionPane.showMessageDialog(null,"Cadastro ralizado com sucesso!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro ao realizar o cadastro.");
                 }
 
                 //telaCadastroUsuario.dispose();
@@ -214,15 +252,19 @@ public class TelaCadastroUsuario extends Fundo {
         int formX  = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+        telaCadastroUsuario.setIconImage(icon.getImage());
         telaCadastroUsuario.setVisible(true);
         telaCadastroUsuario.setResizable(false);
+        telaCadastroUsuario.setTitle("MovieTime!");
         telaCadastroUsuario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         telaCadastroUsuario.setSize(formWidth, formHeight);
         telaCadastroUsuario.setLocation(formX,formY);
         telaCadastroUsuario.add(nome2);
         telaCadastroUsuario.add(idadeBox);
-        telaCadastroUsuario.add(genero1);
-        telaCadastroUsuario.add(genero2);
+        telaCadastroUsuario.add(generoFav1);
+        telaCadastroUsuario.add(generoFav2);
         telaCadastroUsuario.add(sexoBox);
         telaCadastroUsuario.add(txtSenha);
         telaCadastroUsuario.add(labelNome2);

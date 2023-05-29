@@ -70,6 +70,11 @@ public class Main extends Fundo {
         int formX  = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+        frameMain.setIconImage(icon.getImage());
+
         frameMain.setVisible(true);
         frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameMain.setResizable(false);
@@ -93,6 +98,8 @@ public class Main extends Fundo {
             public void actionPerformed(ActionEvent e) {
                 new FormLogin(frameMain);
                 frameMain.setVisible(false);
+
+
             }
         });
     }

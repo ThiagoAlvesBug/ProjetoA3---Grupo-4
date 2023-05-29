@@ -13,7 +13,7 @@ CREATE TABLE Usuario(
     Genero2 VARCHAR(30),
     Sexo CHAR (1), # 'M', 'F', 'O'
     Senha VARCHAR(50)
-);
+);	
 
 INSERT INTO Usuario 
 	(Nome, 
@@ -45,6 +45,15 @@ VALUES
     'M', 
     'vitin123');
 
+
+CREATE TABLE Filme (
+id INT PRIMARY KEY AUTO_INCREMENT,
+id_usuario INT,
+titulo VARCHAR(100),
+genero VARCHAR(100),
+ano INT,
+FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+);
 
 SELECT * FROM Usuario WHERE Nome = 'Victor';
 

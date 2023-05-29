@@ -14,7 +14,9 @@ public class Tela4{
         this.model = model;
 
         /*_______________Tela_______________*/
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
 
+        tela4.setIconImage(icon.getImage());
         tela4.setVisible(true);
         tela4.setTitle("Minha Lista");
         tela4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

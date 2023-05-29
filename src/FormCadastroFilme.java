@@ -23,7 +23,8 @@ public class FormCadastroFilme extends Fundo{
     JButton botaoVerLista = new JButton();
     JButton botaoAdicionar = new JButton();
     JButton botaoSair = new JButton();
-
+    JComboBox generoBox = new JComboBox();
+    JComboBox notaBox = new JComboBox();
 
 
    public FormCadastroFilme(){
@@ -72,9 +73,23 @@ public class FormCadastroFilme extends Fundo{
         labelGenero.setOpaque(false);
         labelGenero.setBounds(430,380,100,40);
 
-        txtGenero.setVisible(true);
-        txtGenero.setName("Genero:");
-        txtGenero.setBounds(520,370,250,50);
+        generoBox.setVisible(true);
+        generoBox.setName("Genero:");
+        generoBox.addItem("Ação");
+        generoBox.addItem("Aventura");
+        generoBox.addItem("Biográfico");
+        generoBox.addItem("Comédia");
+        generoBox.addItem("Comédia Romântica");
+        generoBox.addItem("Histórico");
+        generoBox.addItem("Drama");
+        generoBox.addItem("Fantasia");
+        generoBox.addItem("Ficção-Científica");
+        generoBox.addItem("Musical");
+        generoBox.addItem("Romance");
+        generoBox.addItem("Terror");
+        generoBox.addItem("Suspense");
+
+        generoBox.setBounds(520,370,250,50);
 
        /*_______________Nota_______________*/
 
@@ -84,10 +99,17 @@ public class FormCadastroFilme extends Fundo{
         labelNota.setFont(new Font("Consolas", Font.BOLD,20));
         labelNota.setOpaque(false);
         labelNota.setBounds(450,440,100,40);
-        
-        txtNota.setVisible(true);
-        txtNota.setName("Nota:");
-        txtNota.setBounds(520,430,250,50);
+
+        notaBox.setVisible(true);
+        notaBox.setName("Nota");
+        notaBox.addItem("Selecione...");
+        notaBox.setBounds(520,430,250,50);
+
+        int nota;
+
+        for (nota = 1; nota<=10; nota++){
+            notaBox.addItem(nota);
+        }
 
 
         /*_______________Botões_______________*/
@@ -124,7 +146,7 @@ public class FormCadastroFilme extends Fundo{
                 String nome = txtNome.getText();
                 int ano = Integer.parseInt(txtAno.getText());
                 String genero = txtGenero.getText();
-                int nota = Integer.parseInt(txtNota.getText());
+                int nota = (int) notaBox.getSelectedItem();
 
                 txtNome.setText("");
                 txtAno.setText("");
@@ -174,19 +196,22 @@ public class FormCadastroFilme extends Fundo{
         /*_______________Tela_______________*/
 
 
-       Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
 
-       Dimension screenSize = toolkit.getScreenSize();
+        Dimension screenSize = toolkit.getScreenSize();
 
-       int largura = screenSize.width;
-       int altura = screenSize.height;
+        int largura = screenSize.width;
+        int altura = screenSize.height;
 
-       int formWidth = 1280;
-       int formHeight = 720;
+        int formWidth = 1280;
+        int formHeight = 720;
 
-       int formX  = (largura - formWidth) / 2;
-       int formY = (altura - formHeight) / 2;
+        int formX  = (largura - formWidth) / 2;
+        int formY = (altura - formHeight) / 2;
 
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+        frameCadastroFilme.setIconImage(icon.getImage());
         frameCadastroFilme.setTitle("MovieTime!");
         frameCadastroFilme.setVisible(true);
         frameCadastroFilme.setResizable(false);
@@ -195,8 +220,8 @@ public class FormCadastroFilme extends Fundo{
         frameCadastroFilme.setLocation(formX,formY);
         frameCadastroFilme.add(txtNome);
         frameCadastroFilme.add(txtAno);
-        frameCadastroFilme.add(txtGenero);
-        frameCadastroFilme.add(txtNota);
+        frameCadastroFilme.add(generoBox);
+        frameCadastroFilme.add(notaBox);
         frameCadastroFilme.add(labelNome);
         frameCadastroFilme.add(labelAno);
         frameCadastroFilme.add(labelGenero);

@@ -97,11 +97,7 @@ public class FormLogin{
                     String password = String.valueOf(txtSenha.getPassword());
 
                     ConexaoBD conexaoBD = null;
-                    try {
-                        conexaoBD = new ConexaoBD();
-                    } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    conexaoBD = new ConexaoBD();
 
                     List<User> listaUsuario = conexaoBD.listarUsuarios();
 
@@ -179,6 +175,10 @@ public class FormLogin{
 
         int formX  = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+        frameLogin.setIconImage(icon.getImage());
 
         frameLogin.setVisible(true);
         frameLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class User {
 
@@ -9,6 +11,8 @@ public class User {
     private String genero2;
     private String sexo;
     private String senha;
+
+    private List<Filme> listaFilmes;
 
     public int getId() {
         return id;
