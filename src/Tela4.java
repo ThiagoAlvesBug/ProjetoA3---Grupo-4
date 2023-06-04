@@ -10,8 +10,9 @@ public class Tela4{
 
     /*_______________Tabela_______________*/
 
-    public Tela4(DefaultTableModel model) {
+    public Tela4(int idUsuario) {
         this.model = model;
+
 
         /*_______________Tela_______________*/
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");

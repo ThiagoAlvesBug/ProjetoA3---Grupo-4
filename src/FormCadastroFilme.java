@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class FormCadastroFilme extends Fundo{
 
@@ -27,7 +28,7 @@ public class FormCadastroFilme extends Fundo{
     JComboBox notaBox = new JComboBox();
 
 
-   public FormCadastroFilme(){
+   public FormCadastroFilme(int idUsuario){
 
         /*_______________Sobre_O_Filme_______________*/
 
@@ -153,14 +154,28 @@ public class FormCadastroFilme extends Fundo{
                 txtGenero.setText("");
                 txtNota.setText("");
 
-                FormListaFilme tela4 = new FormListaFilme(model);
+                FormListaFilme tela4 = new FormListaFilme(idUsuario);
                 tela4.adicionarNaTabela(nome,ano,genero,nota);
 
                 Filme filme = new Filme();
+                filme.setIdUsuario(idUsuario);
                 filme.setNome(nome);
                 filme.setAno(ano);
                 filme.setGenero(genero);
                 filme.setNota(nota);
+
+
+
+                ConexaoBD conexaoBD = new ConexaoBD();
+
+                boolean adicionou = conexaoBD.adicionarFilme(filme);
+
+                if(adicionou){
+                    JOptionPane.showMessageDialog(null,"Cadastro de filme ralizado com sucesso!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar o filme.");
+                }
 
             }
         });
@@ -169,7 +184,7 @@ public class FormCadastroFilme extends Fundo{
             @Override
             public void actionPerformed(ActionEvent e) {
                     frameCadastroFilme.dispose();
-                    new FormListaFilme(model);
+                    new FormListaFilme(idUsuario);
                     //tela4.adicionarNaTabela(nome,ano,genero,nota);
 
             }

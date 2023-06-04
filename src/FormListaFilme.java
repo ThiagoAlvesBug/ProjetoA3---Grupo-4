@@ -8,7 +8,7 @@ public class FormListaFilme {
     DefaultTableModel model;
     JTable table;
 
-    public FormListaFilme(DefaultTableModel model) {
+    public FormListaFilme(int idUsuario) {
         this.model = model;
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();

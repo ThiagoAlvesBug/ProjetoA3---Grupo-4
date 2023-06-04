@@ -93,7 +93,7 @@ public class FormLogin{
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource()==botaoLogin) {
 
-                    String userID = txtLogin.getText();
+                    String login = txtLogin.getText();
                     String password = String.valueOf(txtSenha.getPassword());
 
                     ConexaoBD conexaoBD = null;
@@ -103,7 +103,7 @@ public class FormLogin{
 
                     List<User> listaUsuariosEncontrados = listaUsuario.stream()
                             .filter(usuario ->
-                                    usuario.getNome().equals(userID)
+                                    usuario.getNome().equals(login)
                                     && usuario.getSenha().equals(password))
                             .collect(Collectors.toList());
 
@@ -114,8 +114,12 @@ public class FormLogin{
                         return;
                     }
 
+                    int idUsuario = listaUsuariosEncontrados.get(0).getId();
+
                     frameLogin.dispose();
-                    new FormWelcome(userID);
+                    new FormWelcome(idUsuario);
+
+
 
                 }
 

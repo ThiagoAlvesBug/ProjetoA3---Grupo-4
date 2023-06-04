@@ -33,18 +33,6 @@ public class FormWelcome extends Fundo{
                 continuar.setHorizontalAlignment(JLabel.CENTER);
                 continuar.setVerticalAlignment(JLabel.BOTTOM);
 
-                continuar.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                                if (e.getSource()==continuar){
-                                        frameWelcome.dispose();
-                                        new FormCadastroFilme();
-
-                                }
-                        }
-                });
-
-
 
 
                 /*_______________Título_______________*/
@@ -96,7 +84,7 @@ public class FormWelcome extends Fundo{
                 frameWelcome.add(label2);
         }
 
-        FormWelcome(String userID){
+        FormWelcome(int idUsuario){
 
 
 
@@ -118,7 +106,7 @@ public class FormWelcome extends Fundo{
                         public void actionPerformed(ActionEvent e) {
                                if (e.getSource()==continuar){
                                        frameWelcome.dispose();
-                                       new FormCadastroFilme();
+                                       new FormCadastroFilme(idUsuario);
 
                                 }
                         }
