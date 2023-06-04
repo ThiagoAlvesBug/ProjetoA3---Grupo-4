@@ -28,7 +28,7 @@ public class FormCadastroFilme extends Fundo{
     JComboBox notaBox = new JComboBox();
 
 
-   public FormCadastroFilme(int idUsuario){
+   public FormCadastroFilme(){
 
         /*_______________Sobre_O_Filme_______________*/
 
@@ -154,8 +154,7 @@ public class FormCadastroFilme extends Fundo{
                 txtGenero.setText("");
                 txtNota.setText("");
 
-                FormListaFilme tela4 = new FormListaFilme(idUsuario);
-                tela4.adicionarNaTabela(nome,ano,genero,nota);
+                int idUsuario = Sessao.usuarioLogado.getId();
 
                 Filme filme = new Filme();
                 filme.setIdUsuario(idUsuario);
@@ -184,7 +183,7 @@ public class FormCadastroFilme extends Fundo{
             @Override
             public void actionPerformed(ActionEvent e) {
                     frameCadastroFilme.dispose();
-                    new FormListaFilme(idUsuario);
+                    new FormListaFilme();
                     //tela4.adicionarNaTabela(nome,ano,genero,nota);
 
             }

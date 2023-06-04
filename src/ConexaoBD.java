@@ -174,17 +174,15 @@ public class ConexaoBD {
         return false;
     }
 
-    {
-
-
-        List<Filme> listarFilmes; {
+    public List<Filme> listarFilmes(int idUsuarioLogado){
 
         List<Filme> listaFilmes = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             System.out.println("Conexão estabelecida com sucesso!");
 
-            String sql = "SELECT * FROM Filme";
+            //perguntar como filtrar query via parâmetro
+            String sql = "SELECT * FROM Filme WHERE id_usuario = " + idUsuarioLogado;
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
                 while (resultSet.next()) {
@@ -209,6 +207,6 @@ public class ConexaoBD {
             System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
 
-    }
+        return listaFilmes;
     }
 }

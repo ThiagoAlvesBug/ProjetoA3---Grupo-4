@@ -114,10 +114,10 @@ public class FormLogin{
                         return;
                     }
 
-                    int idUsuario = listaUsuariosEncontrados.get(0).getId();
+                    Sessao.usuarioLogado = listaUsuariosEncontrados.get(0);
 
                     frameLogin.dispose();
-                    new FormWelcome(idUsuario);
+                    new FormWelcome();
 
 
 

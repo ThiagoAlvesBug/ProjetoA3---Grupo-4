@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FormListaFilme {
 
@@ -8,8 +10,14 @@ public class FormListaFilme {
     DefaultTableModel model;
     JTable table;
 
-    public FormListaFilme(int idUsuario) {
-        this.model = model;
+    public FormListaFilme() {
+        this.model = new DefaultTableModel();
+
+        model.addColumn("Título");
+        model.addColumn("Ano");
+        model.addColumn("Gênero");
+        model.addColumn("Nota");
+
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
@@ -27,21 +35,45 @@ public class FormListaFilme {
 
         frameListaFilme.setVisible(true);
         frameListaFilme.setTitle("Minha Lista");
-        frameListaFilme.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameListaFilme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameListaFilme.setSize(formWidth, formHeight);
         frameListaFilme.setLocation(formX,formY);
         frameListaFilme.setLocationRelativeTo(null);
 
+        ConexaoBD conexaoBD = new ConexaoBD();
+
+        int idLogado = Sessao.usuarioLogado.getId();
+
+        List<Filme> lista = conexaoBD.listarFilmes(idLogado);
+
+        // Filtrando apenas os filmes do usuário logado via Java
+        /*
+        lista = lista
+                .stream()
+                .filter(filme -> filme.getIdUsuario() == idLogado)
+                .collect(Collectors.toList());
+         */
+
+        int qtdItensLista = lista.size();
+
+        for(int indice = 0; indice < qtdItensLista; indice++){
+
+            Filme filme = lista.get(indice);
+
+          String nome = filme.getNome();
+          int ano = filme.getAno();
+          String genero = filme.getGenero();
+          int nota = filme.getNota();
+
+            model.addRow(new Object[]{nome, ano, genero, nota});
+
+        }
+
         table = new JTable(model);
-
         JScrollPane scrollPane = new JScrollPane(table);
-
         frameListaFilme.add(scrollPane);
 
     }
 
-    public void adicionarNaTabela(String nome, int ano, String genero, int nota) {
-        model.addRow(new Object[]{nome, ano, genero, nota});
-    }
 
 }
