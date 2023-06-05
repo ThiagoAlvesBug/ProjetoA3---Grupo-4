@@ -2,7 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class FormListaFilme {
 
@@ -17,7 +17,6 @@ public class FormListaFilme {
         model.addColumn("Ano");
         model.addColumn("Gênero");
         model.addColumn("Nota");
-
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
@@ -69,6 +68,7 @@ public class FormListaFilme {
           int nota = filme.getNota();
 
             model.addRow(new Object[]{nome, ano, genero, nota});
+
 
         }
 

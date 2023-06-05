@@ -3,7 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+
 
 public class FormCadastroFilme extends Fundo{
 
@@ -145,7 +145,7 @@ public class FormCadastroFilme extends Fundo{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                boolean generoEhValido = generoBox.equals("Selecione...") == false;
+                boolean generoEhValido = generoBox.getSelectedItem().toString().equals("Selecione...") == false;
 
                 if (generoEhValido == false){
 
@@ -154,7 +154,7 @@ public class FormCadastroFilme extends Fundo{
                     return;
                 }
 
-                boolean notaEhValida = notaBox.equals("Selecione...") == false;
+                boolean notaEhValida = notaBox.getSelectedItem().toString().equals("Selecione...") == false;
 
                 if (notaEhValida == false){
 
@@ -165,7 +165,7 @@ public class FormCadastroFilme extends Fundo{
                 String nome = txtNome.getText();
                 int ano = Integer.parseInt(txtAno.getText());
                 String genero = generoBox.getSelectedItem().toString();
-                int nota = (int) notaBox.getSelectedItem();
+                int nota = Integer.parseInt(notaBox.getSelectedItem().toString());
 
                 txtNome.setText("");
                 txtAno.setText("");
