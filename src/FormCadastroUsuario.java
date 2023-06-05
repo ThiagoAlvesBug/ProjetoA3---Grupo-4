@@ -2,9 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
-public class TelaCadastroUsuario extends Fundo {
+public class FormCadastroUsuario extends Fundo {
 
 
     /*_______________Criação_______________*/
@@ -31,7 +30,7 @@ public class TelaCadastroUsuario extends Fundo {
     JComboBox generoFav2 = new JComboBox();
     JComboBox<Integer> idadeBox = new JComboBox<Integer>();
 
-    TelaCadastroUsuario(JFrame frameVoltar){
+    FormCadastroUsuario(JFrame frameVoltar){
 
         /*_______________Nome_______________*/
 

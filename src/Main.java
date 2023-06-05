@@ -9,8 +9,6 @@ public class Main extends Fundo {
     public static void main(String[] args){
 
 
-        //TelaDeLogin loginPage = new TelaDeLogin(User.getLoginInfo());
-
         JFrame frameMain = new JFrame();
 
         JButton botaoLogin = new JButton();
@@ -88,7 +86,7 @@ public class Main extends Fundo {
         botaoCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new TelaCadastroUsuario(frameMain);
+                new FormCadastroUsuario(frameMain);
                 frameMain.setVisible(false);
             }
         });

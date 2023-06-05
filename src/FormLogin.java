@@ -127,7 +127,7 @@ public class FormLogin{
         });//fim do action perform
 
 
-        /*_______________Buttons_______________*/
+        /*_____________Botão_Reset_____________*/
 
 
         botaoReset.setBounds(520,440,250,50);

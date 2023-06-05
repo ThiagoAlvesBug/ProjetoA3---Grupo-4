@@ -32,6 +32,9 @@ public class FormListaFilme {
         int formX  = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+        frameListaFilme.setIconImage(icon.getImage());
 
         frameListaFilme.setVisible(true);
         frameListaFilme.setTitle("Minha Lista");

@@ -76,6 +76,7 @@ public class FormCadastroFilme extends Fundo{
 
         generoBox.setVisible(true);
         generoBox.setName("Genero:");
+        generoBox.addItem("Selecione...");
         generoBox.addItem("Ação");
         generoBox.addItem("Aventura");
         generoBox.addItem("Biográfico");
@@ -144,6 +145,23 @@ public class FormCadastroFilme extends Fundo{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                boolean generoEhValido = generoBox.equals("Selecione...") == false;
+
+                if (generoEhValido == false){
+
+                    JOptionPane.showMessageDialog(null, "Selecione um gênero válido.");
+
+                    return;
+                }
+
+                boolean notaEhValida = notaBox.equals("Selecione...") == false;
+
+                if (notaEhValida == false){
+
+                    JOptionPane.showMessageDialog(null, "Selecione uma nota válida.");
+
+                    return;
+                }
                 String nome = txtNome.getText();
                 int ano = Integer.parseInt(txtAno.getText());
                 String genero = generoBox.getSelectedItem().toString();
@@ -151,8 +169,8 @@ public class FormCadastroFilme extends Fundo{
 
                 txtNome.setText("");
                 txtAno.setText("");
-                txtGenero.setText("");
-                txtNota.setText("");
+                generoBox.setSelectedItem("Selecione...");
+                notaBox.setSelectedItem("Selecione...");
 
                 int idUsuario = Sessao.usuarioLogado.getId();
 
