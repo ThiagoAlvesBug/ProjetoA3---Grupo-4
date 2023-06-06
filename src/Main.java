@@ -5,9 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Main extends Fundo {
 
-
     public static void main(String[] args){
-
 
         JFrame frameMain = new JFrame();
 
@@ -19,8 +17,8 @@ public class Main extends Fundo {
 
         JLabel label1 = new JLabel();
 
-        /*_______________Labels_______________*/
 
+        /*_______________Título_______________*/
 
         labelFundo.setLayout(new GridLayout());
 
@@ -36,8 +34,7 @@ public class Main extends Fundo {
         label1.setOpaque(false);
 
 
-        /*_______________Buttons_______________*/
-
+        /*_______________Botões_______________*/
 
         botaoLogin.setBounds(385, 300, 500, 100);
         botaoLogin.setVisible(true);
@@ -46,6 +43,14 @@ public class Main extends Fundo {
         botaoLogin.setText("Fazer Login");
         botaoLogin.setForeground(Color.white);
         botaoLogin.setBackground(Color.darkGray);
+        botaoLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FormLogin(frameMain);
+                frameMain.setVisible(false);
+            }
+        });
+
 
         botaoCadastro.setBounds(385, 420, 500, 100);
         botaoCadastro.setVisible(true);
@@ -54,6 +59,16 @@ public class Main extends Fundo {
         botaoCadastro.setText("Fazer Cadastro");
         botaoCadastro.setForeground(Color.white);
         botaoCadastro.setBackground(Color.darkGray);
+        botaoCadastro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FormCadastroUsuario(frameMain);
+                frameMain.setVisible(false);
+            }
+        });
+
+
+        /*_______________FrameMain_______________*/
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
@@ -68,11 +83,9 @@ public class Main extends Fundo {
         int formX  = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
-
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
 
         frameMain.setIconImage(icon.getImage());
-
         frameMain.setVisible(true);
         frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameMain.setResizable(false);
@@ -83,22 +96,5 @@ public class Main extends Fundo {
         frameMain.add(label1);
         frameMain.add(labelFundo);
         frameMain.setLocation(formX,formY);
-        botaoCadastro.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FormCadastroUsuario(frameMain);
-                frameMain.setVisible(false);
-            }
-        });
-
-        botaoLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FormLogin(frameMain);
-                frameMain.setVisible(false);
-
-
-            }
-        });
     }
 }

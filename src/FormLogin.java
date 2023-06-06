@@ -125,9 +125,6 @@ public class FormLogin{
         });//fim do action perform
 
 
-        /*_____________Botão_Reset_____________*/
-
-
         botaoReset.setBounds(520,440,250,50);
         botaoReset.setVisible(true);
         botaoReset.setOpaque(false);
@@ -162,8 +159,7 @@ public class FormLogin{
         });
 
 
-        /*_______________TelaLogin_______________*/
-
+        /*_______________FrameLogin_______________*/
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 

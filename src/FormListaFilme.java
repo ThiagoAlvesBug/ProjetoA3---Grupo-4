@@ -13,6 +13,8 @@ public class FormListaFilme {
     public FormListaFilme() {
         this.model = new DefaultTableModel();
 
+        /*_______________CriandoColunas_______________*/
+
         model.addColumn("Título");
         model.addColumn("Ano");
         model.addColumn("Gênero");
@@ -34,7 +36,6 @@ public class FormListaFilme {
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
 
         frameListaFilme.setIconImage(icon.getImage());
-
         frameListaFilme.setVisible(true);
         frameListaFilme.setTitle("Minha Lista");
         frameListaFilme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,19 +43,13 @@ public class FormListaFilme {
         frameListaFilme.setLocation(formX,formY);
         frameListaFilme.setLocationRelativeTo(null);
 
+        /*________PuxandoListaDoBanco________*/
+
         ConexaoBD conexaoBD = new ConexaoBD();
 
         int idLogado = Sessao.usuarioLogado.getId();
 
         List<Filme> lista = conexaoBD.listarFilmes(idLogado);
-
-        // Filtrando apenas os filmes do usuário logado via Java
-        /*
-        lista = lista
-                .stream()
-                .filter(filme -> filme.getIdUsuario() == idLogado)
-                .collect(Collectors.toList());
-         */
 
         int qtdItensLista = lista.size();
 
@@ -69,11 +64,12 @@ public class FormListaFilme {
 
             model.addRow(new Object[]{nome, ano, genero, nota});
 
-
         }
 
         table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
+
+
         frameListaFilme.add(scrollPane);
 
     }

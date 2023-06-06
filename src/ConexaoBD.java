@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ConexaoBD {
 
+    /*__________Aqui_É_Onde_O_Filho_Chora_E_A_Mãe_Não_Vê__________*/
+
     String url = "jdbc:mysql://localhost:3306/MovieTime";
     String username = "root";
     String password = "52576";

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class FormCadastroFilme extends Fundo{
 
+
     /*_______________Criar_______________*/
 
     DefaultTableModel model;
@@ -15,9 +16,7 @@ public class FormCadastroFilme extends Fundo{
     JLabel labelNome = new JLabel();
     JTextField txtAno = new JTextField();
     JLabel labelAno = new JLabel();
-    JTextField txtGenero = new JTextField();
     JLabel labelGenero = new JLabel();
-    JTextField txtNota = new JTextField();
     JLabel labelNota = new JLabel();
     JLabel fundoT3 = new JLabel(fundo);
     JLabel label4 = new JLabel();
@@ -30,14 +29,15 @@ public class FormCadastroFilme extends Fundo{
 
    public FormCadastroFilme(){
 
-        /*_______________Sobre_O_Filme_______________*/
 
+        /*_______________Sobre_O_Filme_______________*/
 
         model = new DefaultTableModel();
         model.addColumn("Nome");
         model.addColumn("Ano");
         model.addColumn("Gênero");
         model.addColumn("Nota");
+
 
        /*_______________Nome_______________*/
 
@@ -52,6 +52,7 @@ public class FormCadastroFilme extends Fundo{
         txtNome.setName("Nome:");
         txtNome.setBounds(520,250,250,50);
 
+
        /*_______________Ano_______________*/
 
         labelAno.setVisible(true);
@@ -64,6 +65,7 @@ public class FormCadastroFilme extends Fundo{
         txtAno.setVisible(true);
         txtAno.setName("Ano:");
         txtAno.setBounds(520,310,250,50);
+
 
        /*_______________Gênero_______________*/
 
@@ -93,6 +95,7 @@ public class FormCadastroFilme extends Fundo{
 
         generoBox.setBounds(520,370,250,50);
 
+
        /*_______________Nota_______________*/
 
         labelNota.setVisible(true);
@@ -115,7 +118,6 @@ public class FormCadastroFilme extends Fundo{
 
 
         /*_______________Botões_______________*/
-
 
         botaoVerLista.setVisible(true);
         botaoVerLista.setOpaque(false);
@@ -140,6 +142,8 @@ public class FormCadastroFilme extends Fundo{
         botaoSair.setForeground(Color.white);
         botaoSair.setFont(new Font("Consolas",Font.BOLD, 36));
         botaoSair.setBounds(950,575,150,50);
+
+       /*_______________BotãoADD_______________*/
 
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
@@ -174,6 +178,8 @@ public class FormCadastroFilme extends Fundo{
 
                 int idUsuario = Sessao.usuarioLogado.getId();
 
+                /*_____________CriandoFilme_____________*/
+
                 Filme filme = new Filme();
                 filme.setIdUsuario(idUsuario);
                 filme.setNome(nome);
@@ -181,7 +187,7 @@ public class FormCadastroFilme extends Fundo{
                 filme.setGenero(genero);
                 filme.setNota(nota);
 
-
+                /*____________EnviandoProBanco____________*/
 
                 ConexaoBD conexaoBD = new ConexaoBD();
 
@@ -197,12 +203,13 @@ public class FormCadastroFilme extends Fundo{
             }
         });
 
+       /*_______________VerLista_______________*/
+
         botaoVerLista.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                     frameCadastroFilme.dispose();
                     new FormListaFilme();
-                    //tela4.adicionarNaTabela(nome,ano,genero,nota);
 
             }
         });
@@ -218,7 +225,6 @@ public class FormCadastroFilme extends Fundo{
 
         /*_______________Título_______________*/
 
-
         label4.setVisible(true);
         label4.setOpaque(false);
         label4.setFont(new Font("Colibri",Font.BOLD,36));
@@ -232,7 +238,6 @@ public class FormCadastroFilme extends Fundo{
 
 
         /*_______________Tela_______________*/
-
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
@@ -271,5 +276,4 @@ public class FormCadastroFilme extends Fundo{
         frameCadastroFilme.add(fundoT3);
 
     }
-
 }

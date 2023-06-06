@@ -6,15 +6,9 @@ import java.awt.event.ActionListener;
 
 public class FormWelcome extends Fundo{
 
-
-        //tela2 = tela de boas vindas
         JFrame frameWelcome = new JFrame();
-
-        //ImageIcon fundo = new ImageIcon(getClass().getResource("BlackPurple.jpg"));
-
         JLabel label2 = new JLabel(fundo);
         JLabel label3 = new JLabel();
-
         JButton continuar = new JButton();
 
         public FormWelcome() {
@@ -31,6 +25,16 @@ public class FormWelcome extends Fundo{
                 continuar.setHorizontalAlignment(JLabel.CENTER);
                 continuar.setVerticalAlignment(JLabel.BOTTOM);
 
+                continuar.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                if (e.getSource()==continuar){
+                                        frameWelcome.dispose();
+                                        new FormCadastroFilme();
+
+                                }
+                        }
+                });
 
 
                 /*_______________Título_______________*/
@@ -58,31 +62,7 @@ public class FormWelcome extends Fundo{
                 label2.add(continuar);
 
 
-                /*_______________Botão_______________*/
-
-                continuar.setVisible(true);
-                continuar.setText("Continuar");
-                continuar.setOpaque(false);
-                continuar.setBackground(Color.magenta);
-                continuar.setForeground(Color.white);
-                continuar.setFont(new Font("Colibri",Font.PLAIN, 30));
-                continuar.setBounds(510,420,250,70);
-                continuar.setHorizontalAlignment(JLabel.CENTER);
-                continuar.setVerticalAlignment(JLabel.BOTTOM);
-
-                continuar.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                                if (e.getSource()==continuar){
-                                        frameWelcome.dispose();
-                                        new FormCadastroFilme();
-
-                                }
-                        }
-                });
-
-
-                /*_______________Frames_______________*/
+                /*_______________Frame_______________*/
 
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
 

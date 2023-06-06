@@ -8,16 +8,12 @@ public class FormCadastroUsuario extends Fundo {
 
     /*_______________Criação_______________*/
 
-    JFrame telaCadastroUsuario = new JFrame();
+    JFrame frameCadastroUsuario = new JFrame();
     JTextField nome2 = new JTextField();
     JLabel labelNome2 = new JLabel();
-    JTextField idade2 = new JTextField();
     JLabel labelIdade2 = new JLabel();
-    JTextField sexoTxt = new JTextField();
     JLabel labelSexo = new JLabel();
-    JTextField genero1 = new JTextField();
     JLabel labelGenero1 = new JLabel();
-    JTextField genero2 = new JTextField();
     JLabel labelGenero2 = new JLabel();
     JPasswordField txtSenha = new JPasswordField();
     JLabel labelSenha = new JLabel();
@@ -175,7 +171,7 @@ public class FormCadastroUsuario extends Fundo {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVoltar.setVisible(true);
-                telaCadastroUsuario.dispose();
+                frameCadastroUsuario.dispose();
             }
         });
 
@@ -212,6 +208,8 @@ public class FormCadastroUsuario extends Fundo {
                     return;
                 }
 
+            /*_____________Criando_Usuário_____________*/
+
                 User usuario = new User();
                 usuario.setNome(nomeCadastro);
                 usuario.setIdade(idade);
@@ -219,6 +217,8 @@ public class FormCadastroUsuario extends Fundo {
                 usuario.setGenero2(generoFavorito2);
                 usuario.setSexo(sexo);
                 usuario.setSenha(senha);
+
+            /*____________EnviandoProBanco____________*/
 
                 ConexaoBD conexaoBD = new ConexaoBD();
 
@@ -231,7 +231,6 @@ public class FormCadastroUsuario extends Fundo {
                     JOptionPane.showMessageDialog(null, "Ocorreu um erro ao realizar o cadastro.");
                 }
 
-                //telaCadastroUsuario.dispose();
 
             }
         });
@@ -253,29 +252,29 @@ public class FormCadastroUsuario extends Fundo {
 
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
 
-        telaCadastroUsuario.setIconImage(icon.getImage());
-        telaCadastroUsuario.setVisible(true);
-        telaCadastroUsuario.setResizable(false);
-        telaCadastroUsuario.setTitle("MovieTime!");
-        telaCadastroUsuario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        telaCadastroUsuario.setSize(formWidth, formHeight);
-        telaCadastroUsuario.setLocation(formX,formY);
-        telaCadastroUsuario.add(nome2);
-        telaCadastroUsuario.add(idadeBox);
-        telaCadastroUsuario.add(generoFav1);
-        telaCadastroUsuario.add(generoFav2);
-        telaCadastroUsuario.add(sexoBox);
-        telaCadastroUsuario.add(txtSenha);
-        telaCadastroUsuario.add(labelNome2);
-        telaCadastroUsuario.add(labelIdade2);
-        telaCadastroUsuario.add(labelGenero1);
-        telaCadastroUsuario.add(labelGenero2);
-        telaCadastroUsuario.add(labelSexo);
-        telaCadastroUsuario.add(labelSenha);
-        telaCadastroUsuario.add(label5);
-        telaCadastroUsuario.add(botaoConfirmar2);
-        telaCadastroUsuario.add(botaoVoltar);
-        telaCadastroUsuario.add(fundoTC);
+        frameCadastroUsuario.setIconImage(icon.getImage());
+        frameCadastroUsuario.setVisible(true);
+        frameCadastroUsuario.setResizable(false);
+        frameCadastroUsuario.setTitle("MovieTime!");
+        frameCadastroUsuario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameCadastroUsuario.setSize(formWidth, formHeight);
+        frameCadastroUsuario.setLocation(formX,formY);
+        frameCadastroUsuario.add(nome2);
+        frameCadastroUsuario.add(idadeBox);
+        frameCadastroUsuario.add(generoFav1);
+        frameCadastroUsuario.add(generoFav2);
+        frameCadastroUsuario.add(sexoBox);
+        frameCadastroUsuario.add(txtSenha);
+        frameCadastroUsuario.add(labelNome2);
+        frameCadastroUsuario.add(labelIdade2);
+        frameCadastroUsuario.add(labelGenero1);
+        frameCadastroUsuario.add(labelGenero2);
+        frameCadastroUsuario.add(labelSexo);
+        frameCadastroUsuario.add(labelSenha);
+        frameCadastroUsuario.add(label5);
+        frameCadastroUsuario.add(botaoConfirmar2);
+        frameCadastroUsuario.add(botaoVoltar);
+        frameCadastroUsuario.add(fundoTC);
 
     }
 
