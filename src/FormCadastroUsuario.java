@@ -150,12 +150,8 @@ public class FormCadastroUsuario extends Fundo {
         label5.setVisible(true);
         label5.setOpaque(false);
         label5.setFont(new Font("Colibri",Font.BOLD,36));
-        label5.setVerticalTextPosition(JLabel.BOTTOM);
-        label5.setHorizontalTextPosition(JLabel.CENTER);
-        label5.setVerticalAlignment(JLabel.CENTER);
-        label5.setHorizontalAlignment(JLabel.CENTER);
-        label5.setText("Nova conta");
-        label5.setSize(1280,100);
+        label5.setText("Nova Conta");
+        label5.setBounds(530,15,250,100);
         label5.setForeground(Color.white);
 
         /*_______________Botão_______________*/

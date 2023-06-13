@@ -29,6 +29,7 @@ public class FormLogin{
 
     public FormLogin(JFrame frameVoltar) {
 
+
         /*_______________Título_______________*/
 
         labelTitulo.setVisible(true);
@@ -47,7 +48,6 @@ public class FormLogin{
 
 
         /*_______________Login_______________*/
-
 
         txtLogin.setVisible(true);
         txtLogin.setName("Usuário:");

@@ -17,11 +17,12 @@ public class Main extends Fundo {
 
         JLabel label1 = new JLabel();
 
+        JButton listaUsers = new JButton();
+
 
         /*_______________Título_______________*/
 
         labelFundo.setLayout(new GridLayout());
-
 
         label1.setText("MovieTime");
         label1.setBounds(505, 150, 350, 100);
@@ -50,6 +51,24 @@ public class Main extends Fundo {
                 frameMain.setVisible(false);
             }
         });
+
+
+
+        listaUsers.setBounds(100,100,200,200);
+        listaUsers.setVisible(true);
+        listaUsers.setOpaque(true);
+        listaUsers.setText("Lista de usuários");
+        listaUsers.setForeground(Color.white);
+        listaUsers.setBackground(Color.darkGray);
+        listaUsers.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FormListaUsuarios();
+                frameMain.dispose();
+            }
+        });
+
+
 
 
         botaoCadastro.setBounds(385, 420, 500, 100);
@@ -91,6 +110,7 @@ public class Main extends Fundo {
         frameMain.setResizable(false);
         frameMain.setSize(formWidth, formHeight);
         frameMain.setTitle("MovieTime");
+        frameMain.add(listaUsers);
         frameMain.add(botaoCadastro);
         frameMain.add(botaoLogin);
         frameMain.add(label1);

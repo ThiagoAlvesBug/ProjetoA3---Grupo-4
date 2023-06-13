@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class FormListaFilme {
         model.addColumn("Ano");
         model.addColumn("Gênero");
         model.addColumn("Nota");
+
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
 
@@ -69,6 +71,7 @@ public class FormListaFilme {
         table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
 
+        table.setEnabled(false);
 
         frameListaFilme.add(scrollPane);
 
