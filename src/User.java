@@ -11,6 +11,8 @@ public class User {
     private String genero2;
     private String sexo;
     private String senha;
+    private boolean ehAdmin;
+
 
     private List<Filme> listaFilmes;
 
@@ -90,6 +92,14 @@ public class User {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public boolean isAdmin() {
+        return ehAdmin;
+    }
+
+    public void setAdmin(boolean ehAdmin) {
+        this.ehAdmin = ehAdmin;
     }
 
 }

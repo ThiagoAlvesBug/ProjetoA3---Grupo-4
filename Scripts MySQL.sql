@@ -12,7 +12,8 @@ CREATE TABLE Usuario(
     Genero1 VARCHAR(30),
     Genero2 VARCHAR(30),
     Sexo CHAR (1),        # 'M', 'F', 'O'
-    Senha VARCHAR(50)
+    Senha VARCHAR(50),
+    EhAdmin BIT DEFAULT 0
 );	
 
 # inserindo usuário
@@ -53,12 +54,32 @@ id_usuario INT,
 titulo VARCHAR(100),
 genero VARCHAR(100),
 ano INT,
+nota INT,
 FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario)
 );
 
 # adicionando a coluna nota na tabela
 ALTER TABLE Filme
-ADD nota int;
+ADD nota INT;
+
+ALTER TABLE Usuario
+ADD EhAdmin BIT DEFAULT 0;
+
+SELECT 
+    *
+FROM 
+	Usuario 
+WHERE 
+	sexo = 'M';
+
+
+UPDATE 
+	Usuario
+SET 
+	EhAdmin = 1
+WHERE
+	id_usuario = 1;
+
 
 SELECT * FROM Usuario;
 

@@ -9,28 +9,50 @@ public class FormWelcome extends Fundo{
         JFrame frameWelcome = new JFrame();
         JLabel label2 = new JLabel(fundo);
         JLabel label3 = new JLabel();
-        JButton continuar = new JButton();
+        JButton btnGerenciarFilmes = new JButton();
+        JButton btnGerenciarUsuarios = new JButton();
 
         public FormWelcome() {
 
                 /*_______________Botão_______________*/
 
-                continuar.setVisible(true);
-                continuar.setText("Continuar");
-                continuar.setOpaque(false);
-                continuar.setBackground(Color.magenta);
-                continuar.setForeground(Color.white);
-                continuar.setFont(new Font("Colibri",Font.PLAIN, 30));
-                continuar.setBounds(510,420,250,70);
-                continuar.setHorizontalAlignment(JLabel.CENTER);
-                continuar.setVerticalAlignment(JLabel.BOTTOM);
+                boolean ehAdmin = Sessao.usuarioLogado.isAdmin();
 
-                continuar.addActionListener(new ActionListener() {
+                btnGerenciarUsuarios.setVisible(ehAdmin);
+                btnGerenciarUsuarios.setText("Gerenciar Usuários");
+                btnGerenciarUsuarios.setOpaque(false);
+                btnGerenciarUsuarios.setBackground(Color.magenta);
+                btnGerenciarUsuarios.setForeground(Color.white);
+                btnGerenciarUsuarios.setFont(new Font("Colibri",Font.PLAIN, 24));
+                btnGerenciarUsuarios.setBounds(510,510,250,70);
+                btnGerenciarUsuarios.setHorizontalAlignment(JLabel.CENTER);
+                btnGerenciarUsuarios.setVerticalAlignment(JLabel.BOTTOM);
+
+                btnGerenciarUsuarios.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                                if (e.getSource()==continuar){
+                                new FormListaUsuarios();
+                                frameWelcome.dispose();
+                        }
+                });
+
+
+                btnGerenciarFilmes.setVisible(true);
+                btnGerenciarFilmes.setText("Gerenciar Filmes");
+                btnGerenciarFilmes.setOpaque(false);
+                btnGerenciarFilmes.setBackground(Color.magenta);
+                btnGerenciarFilmes.setForeground(Color.white);
+                btnGerenciarFilmes.setFont(new Font("Colibri",Font.PLAIN, 24));
+                btnGerenciarFilmes.setBounds(510,420,250,70);
+                btnGerenciarFilmes.setHorizontalAlignment(JLabel.CENTER);
+                btnGerenciarFilmes.setVerticalAlignment(JLabel.BOTTOM);
+
+                btnGerenciarFilmes.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                if (e.getSource()== btnGerenciarFilmes){
                                         frameWelcome.dispose();
-                                        new FormCadastroFilme();
+                                        new FormListaFilme();
 
                                 }
                         }
@@ -56,10 +78,12 @@ public class FormWelcome extends Fundo{
                 label3.setVerticalAlignment(JLabel.CENTER);
 
                 label3.setOpaque(false);
-                label3.add(continuar);
+                label3.add(btnGerenciarFilmes);
+                label3.add(btnGerenciarUsuarios);
 
                 label2.add(label3);
-                label2.add(continuar);
+
+
 
 
                 /*_______________Frame_______________*/

@@ -90,6 +90,7 @@ public class ConexaoBD {
                     String genero2 = resultSet.getString("Genero2");
                     String senha = resultSet.getString("Senha");
                     String sexoChar = resultSet.getString("Sexo");
+                    boolean ehAdmin = resultSet.getBoolean("EhAdmin");
 
                     String sexo;
 
@@ -117,6 +118,7 @@ public class ConexaoBD {
                     user.setGenero2(genero2);
                     user.setSexo(sexo);
                     user.setSenha(senha);
+                    user.setAdmin(ehAdmin);
 
                     listaUsuarios.add(user);
                 }
@@ -211,4 +213,69 @@ public class ConexaoBD {
 
         return listaFilmes;
     }
+
+    public boolean tornarAdministrador(int idUsuario){
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Conexão estabelecida com sucesso!");
+
+            String sqlTornarAdmin = """
+                     UPDATE
+                        Usuario
+                     SET
+                        EhAdmin = 1
+                     WHERE
+                        id_usuario = ?
+                     """;
+
+            try (PreparedStatement statement = connection.prepareStatement(sqlTornarAdmin)) {
+                statement.setInt(1, idUsuario);
+
+                int linhasAfetadas3 = statement.executeUpdate();
+
+                boolean sucesso3;
+                if (linhasAfetadas3 > 0) {
+                    sucesso3 = true;
+                } else {
+                    sucesso3 = false;
+                }
+                return sucesso3;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+        }
+        return false;
+
+    }
+
+    public boolean removerUsuario(int idUsuario){
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Conexão estabelecida com sucesso!");
+
+            String sqlRemoverUsuario = """
+                     DELETE FROM
+                        Usuario
+                     WHERE
+                        id_usuario = ?
+                     """;
+
+            try (PreparedStatement statement = connection.prepareStatement(sqlRemoverUsuario)) {
+                statement.setInt(1, idUsuario);
+
+                int linhasAfetadas4 = statement.executeUpdate();
+
+                return linhasAfetadas4 > 0;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+        }
+        return false;
+
+    }
+
 }

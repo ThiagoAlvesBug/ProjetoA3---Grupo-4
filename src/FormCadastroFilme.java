@@ -20,7 +20,8 @@ public class FormCadastroFilme extends Fundo{
     JLabel labelNota = new JLabel();
     JLabel fundoT3 = new JLabel(fundo);
     JLabel label4 = new JLabel();
-    JButton botaoVerLista = new JButton();
+    JButton botaoVoltar = new JButton();
+    JButton btnVoltar = new JButton();
     JButton botaoAdicionar = new JButton();
     JButton botaoSair = new JButton();
     JComboBox generoBox = new JComboBox();
@@ -119,13 +120,13 @@ public class FormCadastroFilme extends Fundo{
 
         /*_______________Botões_______________*/
 
-        botaoVerLista.setVisible(true);
-        botaoVerLista.setOpaque(false);
-        botaoVerLista.setBackground(Color.black);
-        botaoVerLista.setText("Ver Lista");
-        botaoVerLista.setForeground(Color.white);
-        botaoVerLista.setFont(new Font("Consolas",Font.BOLD, 36));
-        botaoVerLista.setBounds(520,575,250,50);
+        btnVoltar.setVisible(true);
+        btnVoltar.setOpaque(false);
+        btnVoltar.setBackground(Color.black);
+        btnVoltar.setText("Voltar");
+        btnVoltar.setForeground(Color.white);
+        btnVoltar.setFont(new Font("Consolas",Font.BOLD, 36));
+        btnVoltar.setBounds(520,575,250,50);
 
         botaoAdicionar.setVisible(true);
         botaoAdicionar.setOpaque(false);
@@ -195,6 +196,8 @@ public class FormCadastroFilme extends Fundo{
 
                 if(adicionou){
                     JOptionPane.showMessageDialog(null,"Cadastro de filme ralizado com sucesso!");
+                    frameCadastroFilme.dispose();
+                    new FormListaFilme();
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar o filme.");
@@ -205,12 +208,11 @@ public class FormCadastroFilme extends Fundo{
 
        /*_______________VerLista_______________*/
 
-        botaoVerLista.addActionListener(new ActionListener() {
+        btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                     frameCadastroFilme.dispose();
                     new FormListaFilme();
-
             }
         });
 
@@ -269,7 +271,8 @@ public class FormCadastroFilme extends Fundo{
         frameCadastroFilme.add(labelAno);
         frameCadastroFilme.add(labelGenero);
         frameCadastroFilme.add(labelNota);
-        frameCadastroFilme.add(botaoVerLista);
+        frameCadastroFilme.add(botaoVoltar);
+        frameCadastroFilme.add(btnVoltar);
         frameCadastroFilme.add(botaoAdicionar);
         frameCadastroFilme.add(botaoSair);
         frameCadastroFilme.add(label4);
