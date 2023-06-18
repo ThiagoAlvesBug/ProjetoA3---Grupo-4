@@ -85,4 +85,5 @@ SELECT * FROM Usuario;
 
 SELECT * FROM Filme;
 
-
+DELETE FROM Filme
+WHERE id_filme = 5;

@@ -3,6 +3,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -71,19 +73,23 @@ public class FormListaFilme {
 
         List<Filme> lista = conexaoBD.listarFilmes(idLogado);
 
-        int qtdItensLista = lista.size();
 
-        for (int indice = 0; indice < qtdItensLista; indice++) {
+        /*________Ordenar_os_itens_da_tabela_por_nota________*/
 
-            Filme filme = lista.get(indice);
+        Collections.sort(lista, new Comparator<Filme>() {
+            @Override
+            public int compare(Filme filme1, Filme filme2) {
+                return Integer.compare(filme2.getNota(), filme1.getNota());
+            }
+        });
 
+        for (Filme filme : lista) {
             String nome = filme.getNome();
             int ano = filme.getAno();
             String genero = filme.getGenero();
             int nota = filme.getNota();
 
             model.addRow(new Object[]{nome, ano, genero, nota});
-
         }
 
         btnAdicionar.setVisible(true);
