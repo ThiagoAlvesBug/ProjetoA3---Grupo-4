@@ -101,6 +101,10 @@ public class FormWelcome extends Fundo{
                 int formX  = (largura - formWidth) / 2;
                 int formY = (altura - formHeight) / 2;
 
+
+                ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+                frameWelcome.setIconImage(icon.getImage());
                 frameWelcome.setVisible(true);
                 frameWelcome.setLocation(formX,formY);
                 frameWelcome.setForeground(new Color(0x44014F));

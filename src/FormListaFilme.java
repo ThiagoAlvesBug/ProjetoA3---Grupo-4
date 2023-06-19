@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +14,7 @@ public class FormListaFilme {
 
     JFrame frameListaFilme = new JFrame();
     DefaultTableModel model;
-    JTable table;
+    JTable tabelaFilmes;
     JButton btnVoltar = new JButton();
     JButton btnAdicionar = new JButton();
 
@@ -40,6 +42,7 @@ public class FormListaFilme {
         model.addColumn("Ano");
         model.addColumn("Gênero");
         model.addColumn("Nota");
+        model.addColumn("Remover Filme");
 
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -55,9 +58,6 @@ public class FormListaFilme {
         int formX = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
-        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
-
-        frameListaFilme.setIconImage(icon.getImage());
         frameListaFilme.setVisible(true);
         frameListaFilme.setTitle("Minha Lista");
         frameListaFilme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,8 +89,9 @@ public class FormListaFilme {
             String genero = filme.getGenero();
             int nota = filme.getNota();
 
-            model.addRow(new Object[]{nome, ano, genero, nota});
+            model.addRow(new Object[]{nome, ano, genero, nota, "Remover Filme"});
         }
+
 
         btnAdicionar.setVisible(true);
         btnAdicionar.setBackground(Color.darkGray);
@@ -107,18 +108,41 @@ public class FormListaFilme {
         });
 
 
-        table = new JTable(model);
+        tabelaFilmes = new JTable(model);
 
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(tabelaFilmes);
 
-        table.setEnabled(false);
 
+        ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
+
+        frameListaFilme.setIconImage(icon.getImage());
         frameListaFilme.add(btnAdicionar);
         frameListaFilme.add(btnVoltar);
         frameListaFilme.add(scrollPane);
 
 
+
+        tabelaFilmes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+                int row = tabelaFilmes.getEditingRow();
+                int col = tabelaFilmes.getSelectedColumn();
+
+                String nomeFilme = tabelaFilmes.getValueAt(row, 0).toString();
+
+                if (col == 4) {
+                    // Lógica para lidar com o clique no botão "Remover Filme" na linha 'row'
+                    boolean sucesso = conexaoBD.removerFilme(nomeFilme);
+
+                    if (sucesso) {
+                        JOptionPane.showMessageDialog(null, "O filme " + nomeFilme + " foi removido com sucesso.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ocorreu um erro ao remover " + nomeFilme + ".");
+                    }
+                }
+            }
+        });
+
     }
-
-
 }

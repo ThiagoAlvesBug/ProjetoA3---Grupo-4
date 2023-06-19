@@ -55,8 +55,7 @@ public class FormLogin{
         txtLogin.setBounds(520,170,250,50);
         txtLogin.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
 
-        // TODO: Remover auto-preenchimento
-        txtLogin.setText("Thiago");
+        txtLogin.setText("");
 
         labelLogin.setVisible(true);
         labelLogin.setText("Login");
@@ -73,8 +72,7 @@ public class FormLogin{
         txtSenha.setBounds(520,290,250,50);
         txtSenha.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
 
-        // TODO: Remover auto-preenchimento
-        txtSenha.setText("thiaguin123");
+        txtSenha.setText("");
 
         labelSenha.setVisible(true);
         labelSenha.setText("Senha");

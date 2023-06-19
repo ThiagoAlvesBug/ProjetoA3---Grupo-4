@@ -23,7 +23,7 @@ public class FormListaUsuarios {
         model.addColumn("Sexo");
         model.addColumn("Administrador");
         model.addColumn("");
-        model.addColumn("");
+
 
         ConexaoBD conexaoBD = new ConexaoBD();
 

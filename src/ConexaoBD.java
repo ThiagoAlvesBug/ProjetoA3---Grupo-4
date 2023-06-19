@@ -278,4 +278,31 @@ public class ConexaoBD {
 
     }
 
+    public boolean removerFilme(String nomeFilme) {
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Conexão estabelecida com sucesso!");
+
+            String sqlRemoverFilme = """
+                     DELETE FROM
+                        Filme
+                     WHERE
+                        titulo = ?
+                     """;
+
+            try (PreparedStatement statement = connection.prepareStatement(sqlRemoverFilme)) {
+                statement.setString(1, nomeFilme);
+
+                int linhasAfetadas5 = statement.executeUpdate();
+
+                return linhasAfetadas5 > 0;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+        }
+        return false;
+
+    }
 }
