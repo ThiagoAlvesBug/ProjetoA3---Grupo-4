@@ -25,8 +25,8 @@ public class FormListaFilme {
         btnVoltar.setBackground(Color.darkGray);
         btnVoltar.setText("<");
         btnVoltar.setForeground(Color.white);
-        btnVoltar.setFont(new Font("Consolas",Font.BOLD, 20));
-        btnVoltar.setBounds(450,575,50,50);
+        btnVoltar.setFont(new Font("Consolas", Font.BOLD, 20));
+        btnVoltar.setBounds(450, 575, 50, 50);
 
         btnVoltar.addActionListener(new ActionListener() {
             @Override
@@ -38,11 +38,12 @@ public class FormListaFilme {
 
         /*_______________CriandoColunas_______________*/
 
+        model.addColumn("ID");
         model.addColumn("Título");
         model.addColumn("Ano");
         model.addColumn("Gênero");
         model.addColumn("Nota");
-        model.addColumn("Remover Filme");
+        model.addColumn("Remover");
 
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -59,6 +60,7 @@ public class FormListaFilme {
         int formY = (altura - formHeight) / 2;
 
         frameListaFilme.setVisible(true);
+        frameListaFilme.setResizable(false);
         frameListaFilme.setTitle("Minha Lista");
         frameListaFilme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameListaFilme.setSize(formWidth, formHeight);
@@ -84,12 +86,13 @@ public class FormListaFilme {
         });
 
         for (Filme filme : lista) {
+            int id = filme.getIdUsuario();
             String nome = filme.getNome();
             int ano = filme.getAno();
             String genero = filme.getGenero();
             int nota = filme.getNota();
 
-            model.addRow(new Object[]{nome, ano, genero, nota, "Remover Filme"});
+            model.addRow(new Object[]{id, nome, ano, genero, nota, "Remover Filme"});
         }
 
 
@@ -120,29 +123,28 @@ public class FormListaFilme {
         frameListaFilme.add(btnVoltar);
         frameListaFilme.add(scrollPane);
 
-
-
         tabelaFilmes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()){
+                    int row = tabelaFilmes.getSelectedRow();
+                    int col = tabelaFilmes.getSelectedColumn();
 
-                int row = tabelaFilmes.getEditingRow();
-                int col = tabelaFilmes.getSelectedColumn();
+                    int id = Integer.parseInt(tabelaFilmes.getValueAt(row, 0).toString());
+                    String titulo = tabelaFilmes.getValueAt(row,1).toString();
 
-                String nomeFilme = tabelaFilmes.getValueAt(row, 0).toString();
+                    if (col == 5) {
+                        boolean sucesso = conexaoBD.removerFilme(titulo);
 
-                if (col == 4) {
-                    // Lógica para lidar com o clique no botão "Remover Filme" na linha 'row'
-                    boolean sucesso = conexaoBD.removerFilme(nomeFilme);
-
-                    if (sucesso) {
-                        JOptionPane.showMessageDialog(null, "O filme " + nomeFilme + " foi removido com sucesso.");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Ocorreu um erro ao remover " + nomeFilme + ".");
+                        if (sucesso) {
+                            JOptionPane.showMessageDialog(null,  titulo + " foi removido com sucesso.");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao remover  " + titulo + ".");
+                        }
                     }
+
                 }
             }
         });
-
     }
 }

@@ -303,6 +303,5 @@ public class ConexaoBD {
             System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
         return false;
-
     }
 }

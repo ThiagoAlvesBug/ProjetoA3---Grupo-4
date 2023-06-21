@@ -17,6 +17,7 @@ public class Main extends Fundo {
 
         JLabel label1 = new JLabel();
 
+
         /*_______________Título_______________*/
 
         labelFundo.setLayout(new GridLayout());
@@ -94,5 +95,6 @@ public class Main extends Fundo {
         frameMain.add(label1);
         frameMain.add(labelFundo);
         frameMain.setLocation(formX,formY);
+
     }
 }

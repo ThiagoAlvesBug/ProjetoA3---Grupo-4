@@ -76,7 +76,6 @@ public class FormListaUsuarios {
                         } else {
                             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao remover " + nomeUsuario + ".");
                         }
-
                     }
                 }
             }

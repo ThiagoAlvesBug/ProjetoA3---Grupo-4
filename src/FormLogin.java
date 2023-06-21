@@ -126,7 +126,7 @@ public class FormLogin{
                 }
 
             }
-        });//fim do action perform
+        });
 
 
         botaoReset.setBounds(520,440,250,50);
