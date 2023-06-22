@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class FormCadastroFilme extends Fundo{
+public class FormCadastroFilme extends Fundo {
 
 
     /*_______________Criar_______________*/
@@ -28,7 +28,7 @@ public class FormCadastroFilme extends Fundo{
     JComboBox notaBox = new JComboBox();
 
 
-   public FormCadastroFilme(){
+    public FormCadastroFilme() {
 
 
         /*_______________Sobre_O_Filme_______________*/
@@ -40,42 +40,42 @@ public class FormCadastroFilme extends Fundo{
         model.addColumn("Nota");
 
 
-       /*_______________Nome_______________*/
+        /*_______________Nome_______________*/
 
         labelNome.setVisible(true);
         labelNome.setText("Nome:");
         labelNome.setForeground(Color.white);
-        labelNome.setFont(new Font("Consolas", Font.BOLD,20));
+        labelNome.setFont(new Font("Consolas", Font.BOLD, 20));
         labelNome.setOpaque(false);
-        labelNome.setBounds(450,260,100,40);
+        labelNome.setBounds(450, 260, 100, 40);
 
         txtNome.setVisible(true);
         txtNome.setName("Nome:");
-        txtNome.setBounds(520,250,250,50);
+        txtNome.setBounds(520, 250, 250, 50);
 
 
-       /*_______________Ano_______________*/
+        /*_______________Ano_______________*/
 
         labelAno.setVisible(true);
         labelAno.setText(" Ano:");
         labelAno.setForeground(Color.white);
-        labelAno.setFont(new Font("Consolas", Font.BOLD,20));
+        labelAno.setFont(new Font("Consolas", Font.BOLD, 20));
         labelAno.setOpaque(false);
-        labelAno.setBounds(450,320,100,40);
+        labelAno.setBounds(450, 320, 100, 40);
 
         txtAno.setVisible(true);
         txtAno.setName("Ano:");
-        txtAno.setBounds(520,310,250,50);
+        txtAno.setBounds(520, 310, 250, 50);
 
 
-       /*_______________Gênero_______________*/
+        /*_______________Gênero_______________*/
 
         labelGenero.setVisible(true);
         labelGenero.setText("Genero:");
         labelGenero.setForeground(Color.white);
-        labelGenero.setFont(new Font("Consolas", Font.BOLD,20));
+        labelGenero.setFont(new Font("Consolas", Font.BOLD, 20));
         labelGenero.setOpaque(false);
-        labelGenero.setBounds(430,380,100,40);
+        labelGenero.setBounds(430, 380, 100, 40);
 
         generoBox.setVisible(true);
         generoBox.setName("Genero:");
@@ -94,26 +94,26 @@ public class FormCadastroFilme extends Fundo{
         generoBox.addItem("Terror");
         generoBox.addItem("Suspense");
 
-        generoBox.setBounds(520,370,250,50);
+        generoBox.setBounds(520, 370, 250, 50);
 
 
-       /*_______________Nota_______________*/
+        /*_______________Nota_______________*/
 
         labelNota.setVisible(true);
         labelNota.setText("Nota:");
         labelNota.setForeground(Color.white);
-        labelNota.setFont(new Font("Consolas", Font.BOLD,20));
+        labelNota.setFont(new Font("Consolas", Font.BOLD, 20));
         labelNota.setOpaque(false);
-        labelNota.setBounds(450,440,100,40);
+        labelNota.setBounds(450, 440, 100, 40);
 
         notaBox.setVisible(true);
         notaBox.setName("Nota");
         notaBox.addItem("Selecione...");
-        notaBox.setBounds(520,430,250,50);
+        notaBox.setBounds(520, 430, 250, 50);
 
         int nota;
 
-        for (nota = 1; nota<=10; nota++){
+        for (nota = 1; nota <= 10; nota++) {
             notaBox.addItem(nota);
         }
 
@@ -125,26 +125,26 @@ public class FormCadastroFilme extends Fundo{
         btnVoltar.setBackground(Color.black);
         btnVoltar.setText("Voltar");
         btnVoltar.setForeground(Color.white);
-        btnVoltar.setFont(new Font("Consolas",Font.BOLD, 36));
-        btnVoltar.setBounds(520,575,250,50);
+        btnVoltar.setFont(new Font("Consolas", Font.BOLD, 36));
+        btnVoltar.setBounds(520, 575, 250, 50);
 
         botaoAdicionar.setVisible(true);
         botaoAdicionar.setOpaque(false);
         botaoAdicionar.setBackground(Color.black);
         botaoAdicionar.setText("Adicionar");
         botaoAdicionar.setForeground(Color.white);
-        botaoAdicionar.setFont(new Font("Consolas",Font.BOLD, 36));
-        botaoAdicionar.setBounds(520,500,250,50);
+        botaoAdicionar.setFont(new Font("Consolas", Font.BOLD, 36));
+        botaoAdicionar.setBounds(520, 500, 250, 50);
 
         botaoSair.setVisible(true);
         botaoSair.setOpaque(false);
         botaoSair.setBackground(Color.black);
         botaoSair.setText("Sair");
         botaoSair.setForeground(Color.white);
-        botaoSair.setFont(new Font("Consolas",Font.BOLD, 36));
-        botaoSair.setBounds(950,575,150,50);
+        botaoSair.setFont(new Font("Consolas", Font.BOLD, 36));
+        botaoSair.setBounds(950, 575, 150, 50);
 
-       /*_______________BotãoADD_______________*/
+        /*_______________BotãoADD_______________*/
 
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
@@ -152,7 +152,7 @@ public class FormCadastroFilme extends Fundo{
 
                 boolean generoEhValido = generoBox.getSelectedItem().toString().equals("Selecione...") == false;
 
-                if (generoEhValido == false){
+                if (generoEhValido == false) {
 
                     JOptionPane.showMessageDialog(null, "Selecione um gênero válido.");
 
@@ -161,7 +161,7 @@ public class FormCadastroFilme extends Fundo{
 
                 boolean notaEhValida = notaBox.getSelectedItem().toString().equals("Selecione...") == false;
 
-                if (notaEhValida == false){
+                if (notaEhValida == false) {
 
                     JOptionPane.showMessageDialog(null, "Selecione uma nota válida.");
 
@@ -194,25 +194,24 @@ public class FormCadastroFilme extends Fundo{
 
                 boolean adicionou = conexaoBD.adicionarFilme(filme);
 
-                if(adicionou){
-                    JOptionPane.showMessageDialog(null,"Cadastro de filme ralizado com sucesso!");
+                if (adicionou) {
+                    JOptionPane.showMessageDialog(null, "Cadastro de filme ralizado com sucesso!");
                     frameCadastroFilme.dispose();
                     new FormListaFilme();
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar o filme.");
                 }
 
             }
         });
 
-       /*_______________VerLista_______________*/
+        /*_______________VerLista_______________*/
 
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    frameCadastroFilme.dispose();
-                    new FormListaFilme();
+                frameCadastroFilme.dispose();
+                new FormListaFilme();
             }
         });
 
@@ -229,13 +228,13 @@ public class FormCadastroFilme extends Fundo{
 
         label4.setVisible(true);
         label4.setOpaque(false);
-        label4.setFont(new Font("Colibri",Font.BOLD,36));
+        label4.setFont(new Font("Colibri", Font.BOLD, 36));
         label4.setVerticalTextPosition(JLabel.TOP);
         label4.setHorizontalTextPosition(JLabel.CENTER);
         label4.setVerticalAlignment(JLabel.CENTER);
         label4.setHorizontalAlignment(JLabel.CENTER);
         label4.setText("Sobre o filme:");
-        label4.setSize(1280,100);
+        label4.setSize(1280, 100);
         label4.setForeground(Color.white);
 
 
@@ -251,7 +250,7 @@ public class FormCadastroFilme extends Fundo{
         int formWidth = 1280;
         int formHeight = 720;
 
-        int formX  = (largura - formWidth) / 2;
+        int formX = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
@@ -262,7 +261,7 @@ public class FormCadastroFilme extends Fundo{
         frameCadastroFilme.setResizable(false);
         frameCadastroFilme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameCadastroFilme.setSize(formWidth, formHeight);
-        frameCadastroFilme.setLocation(formX,formY);
+        frameCadastroFilme.setLocation(formX, formY);
         frameCadastroFilme.add(txtNome);
         frameCadastroFilme.add(txtAno);
         frameCadastroFilme.add(generoBox);

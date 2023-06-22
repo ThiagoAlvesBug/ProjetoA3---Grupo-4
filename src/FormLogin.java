@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.*;
 
-public class FormLogin{
+public class FormLogin {
 
     /*_______________Criação_______________*/
 
@@ -24,7 +24,8 @@ public class FormLogin{
     JLabel labelLogin = new JLabel();
     JLabel labelSenha = new JLabel();
 
-        FormLogin(){}
+    FormLogin() {
+    }
 
 
     public FormLogin(JFrame frameVoltar) {
@@ -34,17 +35,17 @@ public class FormLogin{
 
         labelTitulo.setVisible(true);
         labelTitulo.setOpaque(false);
-        labelTitulo.setFont(new Font("Colibri",Font.BOLD,36));
+        labelTitulo.setFont(new Font("Colibri", Font.BOLD, 36));
         labelTitulo.setVerticalTextPosition(JLabel.BOTTOM);
         labelTitulo.setHorizontalTextPosition(JLabel.CENTER);
         labelTitulo.setVerticalAlignment(JLabel.CENTER);
         labelTitulo.setHorizontalAlignment(JLabel.CENTER);
         labelTitulo.setText(" Fazer Login:");
-        labelTitulo.setSize(1280,100);
+        labelTitulo.setSize(1280, 100);
         labelTitulo.setForeground(Color.white);
 
-        messageLabel.setLocation(500,500);
-        messageLabel.setFont(new Font("MV Boli",Font.ITALIC,26));
+        messageLabel.setLocation(500, 500);
+        messageLabel.setFont(new Font("MV Boli", Font.ITALIC, 26));
 
 
         /*_______________Login_______________*/
@@ -52,48 +53,48 @@ public class FormLogin{
         txtLogin.setVisible(true);
         txtLogin.setName("Usuário:");
         txtLogin.setBackground(Color.white);
-        txtLogin.setBounds(520,170,250,50);
-        txtLogin.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
+        txtLogin.setBounds(520, 170, 250, 50);
+        txtLogin.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 
         txtLogin.setText("");
 
         labelLogin.setVisible(true);
         labelLogin.setText("Login");
         labelLogin.setForeground(Color.white);
-        labelLogin.setFont(new Font("Consolas", Font.BOLD,20));
+        labelLogin.setFont(new Font("Consolas", Font.BOLD, 20));
         labelLogin.setOpaque(false);
-        labelLogin.setBounds(520,140,100,40);
+        labelLogin.setBounds(520, 140, 100, 40);
 
         /*_______________Senha_______________*/
 
         txtSenha.setVisible(true);
         txtSenha.setName("Senha:");
         txtSenha.setBackground(Color.white);
-        txtSenha.setBounds(520,290,250,50);
-        txtSenha.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
+        txtSenha.setBounds(520, 290, 250, 50);
+        txtSenha.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 
         txtSenha.setText("");
 
         labelSenha.setVisible(true);
         labelSenha.setText("Senha");
         labelSenha.setForeground(Color.white);
-        labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
+        labelSenha.setFont(new Font("Consolas", Font.BOLD, 20));
         labelSenha.setOpaque(false);
-        labelSenha.setBounds(520,260,100,40);
+        labelSenha.setBounds(520, 260, 100, 40);
 
         /*_______________Botões_______________*/
 
-        botaoLogin.setBounds(520,370,250,50);
+        botaoLogin.setBounds(520, 370, 250, 50);
         botaoLogin.setVisible(true);
         botaoLogin.setOpaque(false);
-        botaoLogin.setFont(new Font("Consolas", Font.BOLD,20));
+        botaoLogin.setFont(new Font("Consolas", Font.BOLD, 20));
         botaoLogin.setText("Login");
         botaoLogin.setForeground(Color.white);
         botaoLogin.setBackground(Color.darkGray);
         botaoLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==botaoLogin) {
+                if (e.getSource() == botaoLogin) {
 
                     String login = txtLogin.getText();
                     String password = String.valueOf(txtSenha.getPassword());
@@ -106,10 +107,10 @@ public class FormLogin{
                     List<User> listaUsuariosEncontrados = listaUsuario.stream()
                             .filter(usuario ->
                                     usuario.getNome().equals(login)
-                                    && usuario.getSenha().equals(password))
+                                            && usuario.getSenha().equals(password))
                             .collect(Collectors.toList());
 
-                    if(listaUsuariosEncontrados.size() == 0){
+                    if (listaUsuariosEncontrados.size() == 0) {
                         JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!");
                         txtLogin.setText("");
                         txtSenha.setText("");
@@ -122,34 +123,32 @@ public class FormLogin{
                     new FormWelcome();
 
 
-
                 }
-
             }
         });
 
 
-        botaoReset.setBounds(520,440,250,50);
+        botaoReset.setBounds(520, 440, 250, 50);
         botaoReset.setVisible(true);
         botaoReset.setOpaque(false);
         botaoReset.setText("Reset");
-        botaoReset.setFont(new Font("Consolas", Font.BOLD,20));
+        botaoReset.setFont(new Font("Consolas", Font.BOLD, 20));
         botaoReset.setForeground(Color.white);
         botaoReset.setBackground(Color.darkGray);
         botaoReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==botaoReset) {
+                if (e.getSource() == botaoReset) {
                     txtLogin.setText("");
                     txtSenha.setText("");
                 }
             }
         });
 
-        botaoVoltar.setBounds(10,10,50,50);
+        botaoVoltar.setBounds(10, 10, 50, 50);
         botaoVoltar.setVisible(true);
         botaoVoltar.setOpaque(true);
-        botaoVoltar.setFont(new Font("Consolas", Font.BOLD,20));
+        botaoVoltar.setFont(new Font("Consolas", Font.BOLD, 20));
         botaoVoltar.setText("<");
         botaoVoltar.setForeground(Color.white);
         botaoVoltar.setBackground(Color.DARK_GRAY);
@@ -175,7 +174,7 @@ public class FormLogin{
         int formWidth = 1280;
         int formHeight = 720;
 
-        int formX  = (largura - formWidth) / 2;
+        int formX = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
@@ -185,8 +184,8 @@ public class FormLogin{
         frameLogin.setVisible(true);
         frameLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameLogin.setResizable(false);
-        frameLogin.setSize(formWidth,formHeight);
-        frameLogin.setLocation(formX,formY);
+        frameLogin.setSize(formWidth, formHeight);
+        frameLogin.setLocation(formX, formY);
         frameLogin.setTitle("MovieTime");
         frameLogin.add(txtLogin);
         frameLogin.add(txtSenha);
@@ -198,7 +197,6 @@ public class FormLogin{
         frameLogin.add(botaoVoltar);
         frameLogin.add(labelTitulo);
         frameLogin.add(labelFundo);
-
 
 
     }

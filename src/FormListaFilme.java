@@ -126,18 +126,18 @@ public class FormListaFilme {
         tabelaFilmes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()){
+                if (!e.getValueIsAdjusting()) {
                     int row = tabelaFilmes.getSelectedRow();
                     int col = tabelaFilmes.getSelectedColumn();
 
                     int id = Integer.parseInt(tabelaFilmes.getValueAt(row, 0).toString());
-                    String titulo = tabelaFilmes.getValueAt(row,1).toString();
+                    String titulo = tabelaFilmes.getValueAt(row, 1).toString();
 
                     if (col == 5) {
                         boolean sucesso = conexaoBD.removerFilme(titulo);
 
                         if (sucesso) {
-                            JOptionPane.showMessageDialog(null,  titulo + " foi removido com sucesso.");
+                            JOptionPane.showMessageDialog(null, titulo + " foi removido com sucesso.");
                         } else {
                             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao remover  " + titulo + ".");
                         }

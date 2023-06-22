@@ -12,7 +12,6 @@ public class ConexaoBD {
 
     public boolean cadastrarUsuario(User usuario) {
 
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -178,7 +177,7 @@ public class ConexaoBD {
         return false;
     }
 
-    public List<Filme> listarFilmes(int idUsuarioLogado){
+    public List<Filme> listarFilmes(int idUsuarioLogado) {
 
         List<Filme> listaFilmes = new ArrayList<>();
 
@@ -214,20 +213,20 @@ public class ConexaoBD {
         return listaFilmes;
     }
 
-    public boolean tornarAdministrador(int idUsuario){
+    public boolean tornarAdministrador(int idUsuario) {
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             System.out.println("Conexão estabelecida com sucesso!");
 
             String sqlTornarAdmin = """
-                     UPDATE
-                        Usuario
-                     SET
-                        EhAdmin = 1
-                     WHERE
-                        id_usuario = ?
-                     """;
+                    UPDATE
+                       Usuario
+                    SET
+                       EhAdmin = 1
+                    WHERE
+                       id_usuario = ?
+                    """;
 
             try (PreparedStatement statement = connection.prepareStatement(sqlTornarAdmin)) {
                 statement.setInt(1, idUsuario);
@@ -250,18 +249,18 @@ public class ConexaoBD {
 
     }
 
-    public boolean removerUsuario(int idUsuario){
+    public boolean removerUsuario(int idUsuario) {
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             System.out.println("Conexão estabelecida com sucesso!");
 
             String sqlRemoverUsuario = """
-                     DELETE FROM
-                        Usuario
-                     WHERE
-                        id_usuario = ?
-                     """;
+                    DELETE FROM
+                       Usuario
+                    WHERE
+                       id_usuario = ?
+                    """;
 
             try (PreparedStatement statement = connection.prepareStatement(sqlRemoverUsuario)) {
                 statement.setInt(1, idUsuario);
@@ -285,11 +284,11 @@ public class ConexaoBD {
             System.out.println("Conexão estabelecida com sucesso!");
 
             String sqlRemoverFilme = """
-                     DELETE FROM
-                        Filme
-                     WHERE
-                        titulo = ?
-                     """;
+                    DELETE FROM
+                       Filme
+                    WHERE
+                       titulo = ?
+                    """;
 
             try (PreparedStatement statement = connection.prepareStatement(sqlRemoverFilme)) {
                 statement.setString(1, nomeFilme);

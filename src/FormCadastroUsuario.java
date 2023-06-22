@@ -26,38 +26,38 @@ public class FormCadastroUsuario extends Fundo {
     JComboBox generoFav2 = new JComboBox();
     JComboBox<Integer> idadeBox = new JComboBox<Integer>();
 
-    FormCadastroUsuario(JFrame frameVoltar){
+    FormCadastroUsuario(JFrame frameVoltar) {
 
         /*_______________Nome_______________*/
 
         labelNome2.setVisible(true);
         labelNome2.setText("Nome");
         labelNome2.setForeground(Color.white);
-        labelNome2.setFont(new Font("Consolas", Font.BOLD,20));
+        labelNome2.setFont(new Font("Consolas", Font.BOLD, 20));
         labelNome2.setOpaque(false);
-        labelNome2.setBounds(300,100,100,40);
+        labelNome2.setBounds(300, 100, 100, 40);
 
         nome2.setVisible(true);
         nome2.setName("Nome:");
         nome2.setFont(new Font("Consolas", Font.BOLD, 16));
-        nome2.setBounds(300,130,250,50);
+        nome2.setBounds(300, 130, 250, 50);
 
         /*_______________Idade_______________*/
 
         labelSenha.setVisible(true);
         labelSenha.setText("Senha");
         labelSenha.setForeground(Color.white);
-        labelSenha.setFont(new Font("Consolas", Font.BOLD,20));
+        labelSenha.setFont(new Font("Consolas", Font.BOLD, 20));
         labelSenha.setOpaque(false);
-        labelSenha.setBounds(715,100,100,40);
+        labelSenha.setBounds(715, 100, 100, 40);
 
         idadeBox.setVisible(true);
         idadeBox.setName("Idade");
-        idadeBox.setBounds(715,370,250,50);
+        idadeBox.setBounds(715, 370, 250, 50);
 
         int idade;
 
-        for (idade = 1; idade<=100; idade++){
+        for (idade = 1; idade <= 100; idade++) {
             idadeBox.addItem(idade);
         }
         /*_______________Sexo_______________*/
@@ -65,15 +65,15 @@ public class FormCadastroUsuario extends Fundo {
         labelSexo.setVisible(true);
         labelSexo.setText("Sexo");
         labelSexo.setForeground(Color.white);
-        labelSexo.setFont(new Font("Consolas", Font.BOLD,20));
+        labelSexo.setFont(new Font("Consolas", Font.BOLD, 20));
         labelSexo.setOpaque(false);
-        labelSexo.setBounds(300,340,220,40);
+        labelSexo.setBounds(300, 340, 220, 40);
 
         sexoBox.setVisible(true);
         sexoBox.addItem("Masculino");
         sexoBox.addItem("Feminino");
         sexoBox.addItem("Outro");
-        sexoBox.setBounds(300,370,250,50);
+        sexoBox.setBounds(300, 370, 250, 50);
 
 
         /*_______________Gênero1_______________*/
@@ -81,9 +81,9 @@ public class FormCadastroUsuario extends Fundo {
         labelGenero1.setVisible(true);
         labelGenero1.setText("Gênero favorito 1");
         labelGenero1.setForeground(Color.white);
-        labelGenero1.setFont(new Font("Consolas", Font.BOLD,20));
+        labelGenero1.setFont(new Font("Consolas", Font.BOLD, 20));
         labelGenero1.setOpaque(false);
-        labelGenero1.setBounds(300,220,220,40);
+        labelGenero1.setBounds(300, 220, 220, 40);
 
         generoFav1.setVisible(true);
         generoFav1.setName("Genero");
@@ -101,16 +101,16 @@ public class FormCadastroUsuario extends Fundo {
         generoFav1.addItem("Romance");
         generoFav1.addItem("Terror");
         generoFav1.addItem("Suspense");
-        generoFav1.setBounds(300,250,250,50);
+        generoFav1.setBounds(300, 250, 250, 50);
 
         /*_______________Gênero2_______________*/
 
         labelGenero2.setVisible(true);
         labelGenero2.setText("Gênero favorito 2");
         labelGenero2.setForeground(Color.white);
-        labelGenero2.setFont(new Font("Consolas", Font.BOLD,20));
+        labelGenero2.setFont(new Font("Consolas", Font.BOLD, 20));
         labelGenero2.setOpaque(false);
-        labelGenero2.setBounds(715,220,220,40);
+        labelGenero2.setBounds(715, 220, 220, 40);
 
         generoFav2.setVisible(true);
         generoFav2.setName("Genero");
@@ -129,29 +129,29 @@ public class FormCadastroUsuario extends Fundo {
         generoFav2.addItem("Romance");
         generoFav2.addItem("Terror");
         generoFav2.addItem("Suspense");
-        generoFav2.setBounds(715,250,250,50);
+        generoFav2.setBounds(715, 250, 250, 50);
 
         /*_______________Senha_______________*/
 
         labelIdade2.setVisible(true);
         labelIdade2.setText("Idade");
         labelIdade2.setForeground(Color.white);
-        labelIdade2.setFont(new Font("Consolas", Font.BOLD,20));
+        labelIdade2.setFont(new Font("Consolas", Font.BOLD, 20));
         labelIdade2.setOpaque(false);
-        labelIdade2.setBounds(715,340,220,40);
+        labelIdade2.setBounds(715, 340, 220, 40);
 
         txtSenha.setVisible(true);
         txtSenha.setName("Senha");
         txtSenha.setFont(new Font("Consolas", Font.BOLD, 16));
-        txtSenha.setBounds(715,130,250,50);
+        txtSenha.setBounds(715, 130, 250, 50);
 
         /*_______________Título_______________*/
 
         label5.setVisible(true);
         label5.setOpaque(false);
-        label5.setFont(new Font("Colibri",Font.BOLD,36));
+        label5.setFont(new Font("Colibri", Font.BOLD, 36));
         label5.setText("Nova Conta");
-        label5.setBounds(530,15,250,100);
+        label5.setBounds(530, 15, 250, 100);
         label5.setForeground(Color.white);
 
         /*_______________Botão_______________*/
@@ -160,8 +160,8 @@ public class FormCadastroUsuario extends Fundo {
         botaoVoltar.setBackground(Color.darkGray);
         botaoVoltar.setText("<");
         botaoVoltar.setForeground(Color.white);
-        botaoVoltar.setFont(new Font("Consolas",Font.BOLD, 20));
-        botaoVoltar.setBounds(10,10,50,50);
+        botaoVoltar.setFont(new Font("Consolas", Font.BOLD, 20));
+        botaoVoltar.setBounds(10, 10, 50, 50);
 
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
@@ -177,14 +177,14 @@ public class FormCadastroUsuario extends Fundo {
         botaoConfirmar2.setBackground(Color.black);
         botaoConfirmar2.setText("Criar conta");
         botaoConfirmar2.setForeground(Color.white);
-        botaoConfirmar2.setFont(new Font("Consolas", Font.BOLD,20));
-        botaoConfirmar2.setBounds(505,470,250,50);
+        botaoConfirmar2.setFont(new Font("Consolas", Font.BOLD, 20));
+        botaoConfirmar2.setBounds(505, 470, 250, 50);
 
         botaoConfirmar2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nomeCadastro = nome2.getText();
-                int idade  = (int) idadeBox.getSelectedItem();
+                int idade = (int) idadeBox.getSelectedItem();
                 String generoFavorito1 = (String) generoFav1.getSelectedItem();
                 String generoFavorito2 = (String) generoFav2.getSelectedItem();
                 String senha = txtSenha.getText();
@@ -192,19 +192,19 @@ public class FormCadastroUsuario extends Fundo {
 
                 boolean generoEhValido = generoFavorito1.equals("Selecione...") == false;
 
-                if(generoEhValido == false){
+                if (generoEhValido == false) {
                     JOptionPane.showMessageDialog(null, "Esse não é um Gênero válido");
                     return;
                 }
 
                 boolean generoEhValido2 = generoFavorito2.equals("Selecione...") == false;
 
-                if(generoEhValido == false){
+                if (generoEhValido == false) {
                     JOptionPane.showMessageDialog(null, "Esse não é um Gênero válido");
                     return;
                 }
 
-            /*_____________Criando_Usuário_____________*/
+                /*_____________Criando_Usuário_____________*/
 
                 User usuario = new User();
                 usuario.setNome(nomeCadastro);
@@ -214,16 +214,15 @@ public class FormCadastroUsuario extends Fundo {
                 usuario.setSexo(sexo);
                 usuario.setSenha(senha);
 
-            /*____________EnviandoProBanco____________*/
+                /*____________EnviandoProBanco____________*/
 
                 ConexaoBD conexaoBD = new ConexaoBD();
 
                 boolean cadastrou = conexaoBD.cadastrarUsuario(usuario);
 
-                if(cadastrou){
-                    JOptionPane.showMessageDialog(null,"Cadastro ralizado com sucesso!");
-                }
-                else {
+                if (cadastrou) {
+                    JOptionPane.showMessageDialog(null, "Cadastro ralizado com sucesso!");
+                } else {
                     JOptionPane.showMessageDialog(null, "Ocorreu um erro ao realizar o cadastro.");
                 }
 
@@ -243,7 +242,7 @@ public class FormCadastroUsuario extends Fundo {
         int formWidth = 1280;
         int formHeight = 720;
 
-        int formX  = (largura - formWidth) / 2;
+        int formX = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
@@ -254,7 +253,7 @@ public class FormCadastroUsuario extends Fundo {
         frameCadastroUsuario.setTitle("MovieTime!");
         frameCadastroUsuario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameCadastroUsuario.setSize(formWidth, formHeight);
-        frameCadastroUsuario.setLocation(formX,formY);
+        frameCadastroUsuario.setLocation(formX, formY);
         frameCadastroUsuario.add(nome2);
         frameCadastroUsuario.add(idadeBox);
         frameCadastroUsuario.add(generoFav1);

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Main extends Fundo {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         JFrame frameMain = new JFrame();
 
@@ -38,7 +38,7 @@ public class Main extends Fundo {
         botaoLogin.setBounds(385, 300, 500, 100);
         botaoLogin.setVisible(true);
         botaoLogin.setOpaque(false);
-        botaoLogin.setFont(new Font("Consolas", Font.BOLD,28));
+        botaoLogin.setFont(new Font("Consolas", Font.BOLD, 28));
         botaoLogin.setText("Fazer Login");
         botaoLogin.setForeground(Color.white);
         botaoLogin.setBackground(Color.darkGray);
@@ -54,7 +54,7 @@ public class Main extends Fundo {
         botaoCadastro.setBounds(385, 420, 500, 100);
         botaoCadastro.setVisible(true);
         botaoCadastro.setOpaque(false);
-        botaoCadastro.setFont(new Font("Consolas", Font.BOLD,28));
+        botaoCadastro.setFont(new Font("Consolas", Font.BOLD, 28));
         botaoCadastro.setText("Fazer Cadastro");
         botaoCadastro.setForeground(Color.white);
         botaoCadastro.setBackground(Color.darkGray);
@@ -79,7 +79,7 @@ public class Main extends Fundo {
         int formWidth = 1280;
         int formHeight = 720;
 
-        int formX  = (largura - formWidth) / 2;
+        int formX = (largura - formWidth) / 2;
         int formY = (altura - formHeight) / 2;
 
         ImageIcon icon = new ImageIcon("C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Documentos USJT\\MovieIcon.png");
@@ -94,7 +94,7 @@ public class Main extends Fundo {
         frameMain.add(botaoLogin);
         frameMain.add(label1);
         frameMain.add(labelFundo);
-        frameMain.setLocation(formX,formY);
+        frameMain.setLocation(formX, formY);
 
     }
 }
